@@ -49,8 +49,10 @@ const leaderboardData = buildDemoStats(leaderboardNames);
 // ---------- 3) 8 Pokémon được chọn để hiển thị đầy đủ ----------
 // (khối ô vuông ở trang chính + có trang chi tiết riêng)
 const featuredNames = [
-  'zapdos', 'nidoking', 'clefable', 'tyranitar',
-  'ferrothorn', 'dragonite', 'slowbro', 'gengar'
+  'zapdos', 'nidoking', 'clefable', 'tyranitar', 
+  'ferrothorn', 'dragonite', 'slowbro', 'gengar', 
+  'mega-metagross', 'articuno', 'moltres', 'thundurus',
+  'mega-alakazam', 'mega-salamence', 'garchomp', 'mega-blaziken'
 ];
 
 // ---------- 4) Bài phân tích mẫu cho 8 Pokémon nổi bật ----------
@@ -64,16 +66,24 @@ const analysisText = {
   ferrothorn: 'Bộ hệ Cỏ/Thép giúp Ferrothorn kháng rất nhiều đòn tấn công phổ biến. Dù tốc độ cực thấp, chỉ số phòng thủ vượt trội cùng đặc trưng Gai Nhọn (Iron Barbs) khiến đối thủ phải trả giá mỗi khi tấn công vật lý vào nó.',
   dragonite: 'Dragonite hiếm khi bị khắc chế triệt để nhờ bộ chỉ số toàn diện và khả năng học đa dạng chiêu thức. Đặc trưng Nhiều Vảy (Multiscale) giúp nó chịu đòn đầu tiên tốt hơn hẳn khi vào sân trong tình huống an toàn.',
   slowbro: 'Slowbro là một trong những lựa chọn phòng thủ đặc biệt bền bỉ nhờ chỉ số Phòng Thủ cao cùng đặc trưng Tái Sinh (Regenerator), hồi phục HP mỗi khi rút lui — rất phù hợp để luân chuyển liên tục trong trận đấu dài hơi.',
-  gengar: 'Tốc độ cao cùng Sức Tấn Công Đặc Biệt vượt trội giúp Gengar trở thành một trong những đòn kết liễu nhanh và nguy hiểm nhất, đặc biệt khi phối hợp cùng chiến thuật hy sinh (sacrifice) để dọn đường cho đồng đội.'
+  gengar: 'Tốc độ cao cùng Sức Tấn Công Đặc Biệt vượt trội giúp Gengar trở thành một trong những đòn kết liễu nhanh và nguy hiểm nhất, đặc biệt khi phối hợp cùng chiến thuật hy sinh (sacrifice) để dọn đường cho đồng đội.',
+  mega-metagross: 'Mega Metagross sở hữu bộ hệ Thép/Siêu Khổng Lồ (Steel/Psychic) giúp kháng nhiều đòn tấn công phổ biến. Chỉ số Tấn Công và Phòng Thủ cao cùng khả năng học đa dạng chiêu thức khiến nó trở thành một trong những Pokémon toàn diện nhất.',
+  articuno: 'Articuno sở hữu bộ hệ băng/phiên bản hiếm gặp, giúp nó dễ dàng khắc chế nhiều đối thủ. Chỉ số Sức Tấn Công Đặc Biệt cao cùng khả năng miễn nhiễm lạnh (do hệ băng) khiến nó trở thành một trong những Pokémon phòng thủ cực kỳ mạnh mẽ.',
+  moltres: 'Moltres sở hữu bộ hệ Hỏa/Phiên bản hiếm gặp, giúp nó dễ dàng khắc chế nhiều đối thủ. Chỉ số Sức Tấn Công Đặc Biệt cao cùng khả năng miễn nhiễm lửa (do hệ Hỏa) khiến nó trở thành một trong những Pokémon phòng thủ cực kỳ mạnh mẽ.',
+  thundurus: 'Thundurus sở hữu bộ hệ Điện/Phiên bản hiếm gặp, giúp nó dễ dàng khắc chế nhiều đối thủ. Chỉ số Sức Tấn Công Đặc Biệt cao cùng khả năng miễn nhiễm điện (do hệ Điện) khiến nó trở thành một trong những Pokémon phòng thủ cực kỳ mạnh mẽ.',
+  mega-alakazam: 'Mega Alakazam sở hữu bộ hệ Tâm Linh/Phiên bản hiếm gặp, giúp nó dễ dàng khắc chế nhiều đối thủ. Chỉ số Sức Tấn Công Đặc Biệt cao cùng khả năng miễn nhiễm tâm linh (do hệ Tâm Linh) khiến nó trở thành một trong những Pokémon phòng thủ cực kỳ mạnh mẽ.',
+  mega-salamence: 'Mega Salamence sở hữu bộ hệ Bay/Phiên bản hiếm gặp, giúp nó dễ dàng khắc chế nhiều đối thủ. Chỉ số Sức Tấn Công Đặc Biệt cao cùng khả năng miễn nhiễm bay (do hệ Bay) khiến nó trở thành một trong những Pokémon phòng thủ cực kỳ mạnh mẽ.',
+  garchomp: 'Garchomp sở hữu bộ hệ Đất/Phiên bản hiếm gặp, giúp nó dễ dàng khắc chế nhiều đối thủ. Chỉ số Sức Tấn Công Đặc Biệt cao cùng khả năng miễn nhiễm đất (do hệ Đất) khiến nó trở thành một trong những Pokémon phòng thủ cực kỳ mạnh mẽ.',
+  mega-blaziken: 'Mega Blaziken sở hữu bộ hệ Hỏa/Phiên bản hiếm gặp, giúp nó dễ dàng khắc chế nhiều đối thủ. Chỉ số Sức Tấn Công Đặc Biệt cao cùng khả năng miễn nhiễm lửa (do hệ Hỏa) khiến nó trở thành một trong những Pokémon phòng thủ cực kỳ mạnh mẽ.',
 };
 
 // ---------- 5) Bảng màu theo hệ Pokémon (quy ước màu phổ biến) ----------
 const typeColors = {
-  normal: '#A8A878', fire: '#F08030', water: '#6890F0', electric: '#F8D030',
-  grass: '#78C850', ice: '#98D8D8', fighting: '#C03028', poison: '#A040A0',
-  ground: '#E0C068', flying: '#A890F0', psychic: '#F85888', bug: '#A8B820',
-  rock: '#B8A038', ghost: '#705898', dragon: '#7038F8', dark: '#705848',
-  steel: '#B8B8D0', fairy: '#EE99AC'
+  normal: '#f8f8f7', fire: '#ff5e00', water: '#1882a5', electric: '#F8D030',
+  grass: '#78C850', ice: '#98D8D8', fighting: '#c07e28', poison: '#A040A0',
+  ground: '#725400', flying: '#d6ccf5', psychic: '#F85888', bug: '#A8B820',
+  rock: '#5d4d06', ghost: '#3f71a7', dragon: '#0177e5', dark: '#010f1c',
+  steel: '#bbbbca', fairy: '#EE99AC'
 };
 
 // ---------- 6) Hàm dùng chung: viết hoa chữ cái đầu ----------
