@@ -51,8 +51,9 @@ const leaderboardData = buildDemoStats(leaderboardNames);
 const featuredNames = [
   'zapdos', 'nidoking', 'clefable', 'tyranitar', 
   'ferrothorn', 'dragonite', 'slowbro', 'gengar', 
-  'mega-metagross', 'articuno', 'moltres', 'thundurus',
-  'mega-alakazam', 'mega-salamence', 'garchomp', 'mega-blaziken'
+  'garchomp', 'dragapult', 'excadrill', 'snorlax'
+
+  
 ];
 
 // ---------- 4) Bài phân tích mẫu cho 8 Pokémon nổi bật ----------
@@ -67,14 +68,11 @@ const analysisText = {
   dragonite: 'Dragonite hiếm khi bị khắc chế triệt để nhờ bộ chỉ số toàn diện và khả năng học đa dạng chiêu thức. Đặc trưng Nhiều Vảy (Multiscale) giúp nó chịu đòn đầu tiên tốt hơn hẳn khi vào sân trong tình huống an toàn.',
   slowbro: 'Slowbro là một trong những lựa chọn phòng thủ đặc biệt bền bỉ nhờ chỉ số Phòng Thủ cao cùng đặc trưng Tái Sinh (Regenerator), hồi phục HP mỗi khi rút lui — rất phù hợp để luân chuyển liên tục trong trận đấu dài hơi.',
   gengar: 'Tốc độ cao cùng Sức Tấn Công Đặc Biệt vượt trội giúp Gengar trở thành một trong những đòn kết liễu nhanh và nguy hiểm nhất, đặc biệt khi phối hợp cùng chiến thuật hy sinh (sacrifice) để dọn đường cho đồng đội.',
-  mega-metagross: 'Mega Metagross sở hữu bộ hệ Thép/Siêu Khổng Lồ (Steel/Psychic) giúp kháng nhiều đòn tấn công phổ biến. Chỉ số Tấn Công và Phòng Thủ cao cùng khả năng học đa dạng chiêu thức khiến nó trở thành một trong những Pokémon toàn diện nhất.',
-  articuno: 'Articuno sở hữu bộ hệ băng/phiên bản hiếm gặp, giúp nó dễ dàng khắc chế nhiều đối thủ. Chỉ số Sức Tấn Công Đặc Biệt cao cùng khả năng miễn nhiễm lạnh (do hệ băng) khiến nó trở thành một trong những Pokémon phòng thủ cực kỳ mạnh mẽ.',
-  moltres: 'Moltres sở hữu bộ hệ Hỏa/Phiên bản hiếm gặp, giúp nó dễ dàng khắc chế nhiều đối thủ. Chỉ số Sức Tấn Công Đặc Biệt cao cùng khả năng miễn nhiễm lửa (do hệ Hỏa) khiến nó trở thành một trong những Pokémon phòng thủ cực kỳ mạnh mẽ.',
-  thundurus: 'Thundurus sở hữu bộ hệ Điện/Phiên bản hiếm gặp, giúp nó dễ dàng khắc chế nhiều đối thủ. Chỉ số Sức Tấn Công Đặc Biệt cao cùng khả năng miễn nhiễm điện (do hệ Điện) khiến nó trở thành một trong những Pokémon phòng thủ cực kỳ mạnh mẽ.',
-  mega-alakazam: 'Mega Alakazam sở hữu bộ hệ Tâm Linh/Phiên bản hiếm gặp, giúp nó dễ dàng khắc chế nhiều đối thủ. Chỉ số Sức Tấn Công Đặc Biệt cao cùng khả năng miễn nhiễm tâm linh (do hệ Tâm Linh) khiến nó trở thành một trong những Pokémon phòng thủ cực kỳ mạnh mẽ.',
-  mega-salamence: 'Mega Salamence sở hữu bộ hệ Bay/Phiên bản hiếm gặp, giúp nó dễ dàng khắc chế nhiều đối thủ. Chỉ số Sức Tấn Công Đặc Biệt cao cùng khả năng miễn nhiễm bay (do hệ Bay) khiến nó trở thành một trong những Pokémon phòng thủ cực kỳ mạnh mẽ.',
-  garchomp: 'Garchomp sở hữu bộ hệ Đất/Phiên bản hiếm gặp, giúp nó dễ dàng khắc chế nhiều đối thủ. Chỉ số Sức Tấn Công Đặc Biệt cao cùng khả năng miễn nhiễm đất (do hệ Đất) khiến nó trở thành một trong những Pokémon phòng thủ cực kỳ mạnh mẽ.',
-  mega-blaziken: 'Mega Blaziken sở hữu bộ hệ Hỏa/Phiên bản hiếm gặp, giúp nó dễ dàng khắc chế nhiều đối thủ. Chỉ số Sức Tấn Công Đặc Biệt cao cùng khả năng miễn nhiễm lửa (do hệ Hỏa) khiến nó trở thành một trong những Pokémon phòng thủ cực kỳ mạnh mẽ.',
+  garchomp: 'Garchomp là một trong những Pokémon tấn công vật lý mạnh mẽ nhất, với tốc độ và sức mạnh vượt trội. Bộ hệ Rồng/Đất giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
+  dragapult: 'Dragapult sở hữu tốc độ cực cao và khả năng tấn công đa dạng, cho phép nó áp đảo nhiều đối thủ trước khi họ kịp phản ứng. Bộ hệ Rồng/Bóng Ma giúp nó kháng nhiều đòn phổ biến và gây sát thương hiệu quả.',
+  excadrill: 'Excadrill là một trong những Pokémon tấn công vật lý mạnh mẽ nhất với tốc độ tốt. Bộ hệ Đất/Thép giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
+  snorlax: 'Snorlax là một trong những lựa chọn phòng thủ vật lý bền bỉ nhất nhờ chỉ số HP và Phòng Thủ cao. Đặc trưng Ăn Ngủ (Thick Fat) giúp nó kháng nhiều đòn phổ biến, đồng thời hồi phục HP nhanh chóng.',
+
 };
 
 // ---------- 5) Bảng màu theo hệ Pokémon (quy ước màu phổ biến) ----------
