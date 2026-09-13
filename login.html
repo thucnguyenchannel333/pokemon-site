@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng nhập | MetaDex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header site-header--auth">
+    <a href="index.html" class="logo">Meta<span>Dex</span></a>
+  </header>
+
+  <main class="auth-main">
+    <div class="auth-card">
+      <h1>Đăng nhập</h1>
+      <p class="auth-subtitle">Chào mừng quay lại MetaDex.</p>
+
+      <form id="login-form" novalidate>
+        <label for="login-email">Email hoặc tên đăng nhập</label>
+        <input type="text" id="login-email" required>
+
+        <label for="login-password">Mật khẩu</label>
+        <input type="password" id="login-password" required>
+
+        <button type="submit" class="btn-solid btn-block">Đăng nhập</button>
+      </form>
+
+      <p id="auth-message" class="auth-message"></p>
+
+      <p class="auth-switch">Chưa có tài khoản? <a href="signup.html">Đăng ký ngay</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Trang minh hoạ được thiết kế bởi <strong>[Tên của bạn]</strong>. Form này chỉ mang tính minh hoạ giao diện, chưa kết nối máy chủ thật.</p>
+  </footer>
+
+  <script src="auth.js"></script>
+</body>
+</html>

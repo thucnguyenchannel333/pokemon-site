@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi tiết Pokémon | MetaDex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="index.html" class="logo">Meta<span>Dex</span></a>
+    <div class="header-right">
+      <div class="search-wrap">
+        <input type="text" id="site-search" placeholder="Tìm Pokémon..." autocomplete="off">
+        <div id="search-dropdown" class="search-dropdown"></div>
+      </div>
+      <a href="login.html" class="btn-ghost">Login</a>
+      <a href="signup.html" class="btn-solid">Sign Up</a>
+    </div>
+  </header>
+
+  <main class="detail-main">
+    <a href="index.html" class="back-link">&larr; Quay lại trang chính</a>
+
+    <div class="detail-grid">
+      <!--
+        Đây chính là "1 ô để phần tên + icon ảnh + chỉ số" theo yêu cầu.
+        Nội dung được detail.js điền vào bằng JavaScript sau khi gọi PokeAPI.
+      -->
+      <section id="stat-panel" class="panel stat-panel">
+        <p class="loading-text">Đang tải dữ liệu từ PokeAPI...</p>
+      </section>
+
+      <!-- Đây là "1 ô để phân tích + mô tả về cá thể đó" -->
+      <section id="analysis-panel" class="panel analysis-panel"></section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Trang chi tiết này thuộc trang minh hoạ được thiết kế bởi <strong>[Tên của bạn]</strong>. Chỉ số Pokémon lấy trực tiếp từ PokeAPI theo thời gian thực; phần phân tích là nội dung mẫu tự viết.</p>
+    <p class="footer-copyright">© 2026 MetaDex. Dữ liệu Pokémon và hình ảnh thuộc bản quyền Nintendo/Game Freak, chỉ dùng cho mục đích học tập.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="header-search.js"></script>
+  <script src="detail.js"></script>
+</body>
+</html>

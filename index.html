@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MetaDex | Bảng Xếp Hạng Meta</title>
+<meta name="description" content="Bảng xếp hạng tỉ lệ sử dụng và thẻ Pokémon nổi bật, dữ liệu lấy trực tiếp từ PokeAPI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="index.html" class="logo">Thuc<span>Nguyen</span></a>
+    <div class="header-right">
+      <div class="search-wrap">
+        <input type="text" id="site-search" placeholder="Tìm Pokémon..." autocomplete="off">
+        <div id="search-dropdown" class="search-dropdown"></div>
+      </div>
+      <a href="login.html" class="btn-ghost">Login</a>
+      <a href="signup.html" class="btn-solid">Sign Up</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-intro">
+      <h1>Bảng Xếp Hạng Meta</h1>
+      <p>Theo dõi tỉ lệ sử dụng và tỉ lệ thắng của các Pokémon phổ biến nhất, cùng bộ sưu tập những cái tên nổi bật nhất mùa này.</p>
+    </section>
+
+    <section class="leaderboard-section">
+      <h2>🏆 Bảng Xếp Hạng Sử Dụng</h2>
+      <div class="table-wrap">
+        <table class="leaderboard-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Pokémon</th>
+              <th>Tỉ lệ sử dụng</th>
+              <th>Tỉ lệ thắng</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboard-body">
+            <tr id="leaderboard-loading"><td colspan="4" class="loading-text">Đang tải dữ liệu từ PokeAPI...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="featured-section">
+      <h2>Nổi Bật</h2>
+      <div id="featured-grid" class="featured-grid">
+        <p class="loading-text">Đang tải...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Trang web minh hoạ này được thiết kế và xây dựng bởi <strong>[Tên của bạn]</strong>, sinh viên ngành Công nghệ Thông tin, như một bài thực hành về HTML, CSS, JavaScript và gọi API bên ngoài (PokeAPI). Số liệu tỉ lệ sử dụng/thắng chỉ mang tính minh hoạ.</p>
+    <p class="footer-copyright">© 2026 MetaDex. Dữ liệu Pokémon và hình ảnh thuộc bản quyền Nintendo/Game Freak, chỉ dùng cho mục đích học tập.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="header-search.js"></script>
+  <script src="home.js"></script>
+</body>
+</html>
