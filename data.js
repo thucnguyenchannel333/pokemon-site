@@ -232,7 +232,7 @@ async function getItemSprite(itemName) {
    trong featuredNames rồi)? Chỉ cần thêm 1 key mới vào object này,
    đúng định dạng bên dưới.
    ============================================================ */
-const teamData = {
+const NidokingteamData = {
   nidoking: {
     overview: 'Đội hình này xây dựng xung quanh Nidoking ở vai trò đặc công xuyên phá (special wallbreaker), tận dụng bộ hệ Độc/Đất khá hiếm để tạo áp lực lên nhiều đội hình phòng thủ tiêu chuẩn. Các đồng đội được chọn nhằm bù đắp tốc độ, hỗ trợ dọn hazard, và gánh vác những mối đe doạ mà Nidoking khó xử lý một mình.',
     members: [
@@ -275,10 +275,11 @@ const teamData = {
     ]
   }
 }
-{  
+  const ZapdosteamData = {  
   zapdos: {
     overview: 'Đóng vai trò là mắt xích luân chuyển phòng thủ chính chống lại các kẻ quét sân vật lý. Khả năng Static trừng phạt những kẻ dùng U-turn hoặc các đòn tấn công vật lý như Fake Out từ mega-medicham và mega-lopunny bằng cách đe dọa gây tê liệt, trực tiếp dập tắt đà hưng phấn của đối thủ. Sự góp mặt của Defog cung cấp khả năng kiểm soát bẫy cần thiết, dù cần sử dụng cẩn thận để tránh dọn sạch chính những chiếc bẫy mà mega-diancie đã phản lại thành công sang phía sân đối phương.',
-      { name: 'zapdos', isAnchor: true },
+    members: [  
+    { name: 'Zapdos', isAnchor: true },
       {
         name: 'Ferrothorn',
         item: 'Leftovers', ability: 'Iron Barbs', nature: 'Careful',
@@ -314,5 +315,6 @@ const teamData = {
         moves: ['Moonblast', 'Diamond Storm', 'Earth Power', 'Protect'],
         analysis: 'Mega Diancie: Đóng vai trò là kẻ quấy rối đầu trận, mega-diancie tận dụng Magic Bounce để ngăn chặn đối thủ đặt bẫy hoặc dùng các chiêu trạng thái cả về mặt tâm lý lẫn kỹ thuật. Chỉ số EV tấn công cụ thể được tính toán kỹ lưỡng để đảm bảo 2HKO slowking bằng Diamond Storm, ngăn đối phương luân chuyển liên tục với Regenerator. Ngoài ra, việc Diamond Storm có 50% tỉ lệ tăng mạnh Phòng thủ có thể nhanh chóng biến mega-diancie thành một bức tường vật lý bất khả xâm phạm.'
       }
+    ]
   }
 };
