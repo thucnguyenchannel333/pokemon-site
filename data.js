@@ -232,7 +232,7 @@ async function getItemSprite(itemName) {
    trong featuredNames rồi)? Chỉ cần thêm 1 key mới vào object này,
    đúng định dạng bên dưới.
    ============================================================ */
-const NidokingteamData = {
+const teamData = {
   nidoking: {
     overview: 'Đội hình này xây dựng xung quanh Nidoking ở vai trò đặc công xuyên phá (special wallbreaker), tận dụng bộ hệ Độc/Đất khá hiếm để tạo áp lực lên nhiều đội hình phòng thủ tiêu chuẩn. Các đồng đội được chọn nhằm bù đắp tốc độ, hỗ trợ dọn hazard, và gánh vác những mối đe doạ mà Nidoking khó xử lý một mình.',
     members: [
@@ -273,9 +273,7 @@ const NidokingteamData = {
         analysis: 'Grassy Terrain mà Rillaboom dựng lên âm thầm hồi một phần HP mỗi lượt cho các Pokémon đứng đất trong đội, bao gồm cả Nidoking — lợi thế nhỏ nhưng cộng dồn hiệu quả trong trận kéo dài. Grassy Glide được ưu tiên ra đòn trước cũng cho Rillaboom khả năng dọn dẹp gần giống Garchomp, nhưng ở một dải mục tiêu khác.'
       }
     ]
-  }
-};
-  const ZapdosteamData = {  
+  },
   zapdos: {
     overview: 'Đóng vai trò là mắt xích luân chuyển phòng thủ chính chống lại các kẻ quét sân vật lý. Khả năng Static trừng phạt những kẻ dùng U-turn hoặc các đòn tấn công vật lý như Fake Out từ mega-medicham và mega-lopunny bằng cách đe dọa gây tê liệt, trực tiếp dập tắt đà hưng phấn của đối thủ. Sự góp mặt của Defog cung cấp khả năng kiểm soát bẫy cần thiết, dù cần sử dụng cẩn thận để tránh dọn sạch chính những chiếc bẫy mà mega-diancie đã phản lại thành công sang phía sân đối phương.',
     members: [  
