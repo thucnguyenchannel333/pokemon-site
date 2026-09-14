@@ -185,3 +185,94 @@ async function getPokemon(name) {
     return null; // trả về null thay vì làm hỏng cả trang khi 1 mục lỗi
   }
 }
+
+// ---------- 8) Hàm dùng chung: lấy icon của 1 vật phẩm (item) từ PokeAPI ----------
+// Dùng cho icon nhỏ bên cạnh tên item trong ô "Đội Hình Đề Xuất" (team.js).
+const _itemCache = {};
+
+async function getItemSprite(itemName) {
+  const slug = itemName.toLowerCase().replace(/\s+/g, '-');
+  if (_itemCache[slug]) return _itemCache[slug];
+
+  try {
+    const res = await fetch('https://pokeapi.co/api/v2/item/' + slug);
+    if (!res.ok) throw new Error('Không tìm thấy item: ' + slug);
+    const raw = await res.json();
+    const sprite = raw.sprites && raw.sprites.default ? raw.sprites.default : null;
+    _itemCache[slug] = sprite;
+    return sprite;
+  } catch (err) {
+    console.error('[getItemSprite] Lỗi khi tải icon cho "' + itemName + '":', err);
+    return null;
+  }
+}
+
+/* ============================================================
+   9) ĐỘI HÌNH ĐỀ XUẤT (Suggested Team)
+
+   NGUỒN DỮ LIỆU: PokeAPI KHÔNG có khái niệm "đội hình" hay "bộ set thi
+   đấu" (item/nature/EVs/moveset khuyên dùng) — đây là kiến thức do
+   cộng đồng competitive đúc kết, không phải dữ liệu gốc trò chơi.
+
+   Nguồn đáng tin cậy nhất cho loại thông tin này là STRATEGY POKEDEX
+   của Smogon: https://www.smogon.com/dex/ — chọn thế hệ (ví dụ "sv")
+   → format (ví dụ "national-dex" hoặc "ou") → trang riêng của từng
+   Pokémon sẽ có mục "Sets" (item/ability/nature/EVs/moveset) kèm bài
+   phân tích do người chơi kỳ cựu viết và kiểm duyệt.
+
+   Object bên dưới CHỈ có dữ liệu đầy đủ cho "nidoking" như một ví dụ
+   mẫu hoàn chỉnh (mô phỏng đúng bố cục trong ảnh bạn gửi). Các set
+   (item/ability/nature/EVs/moveset) dùng ở đây là những set kinh điển,
+   được biết đến rộng rãi trong cộng đồng — nhưng vì meta thay đổi theo
+   thời gian, hãy luôn ĐỐI CHIẾU LẠI với trang Smogon hiện tại trước khi
+   dùng cho mục đích thật. Phần phân tích (analysis) là nội dung MÌNH
+   tự viết, không sao chép từ bất kỳ nguồn nào.
+
+   Muốn thêm đội hình cho 1 Pokémon nổi bật khác (bạn đã có 50 Pokémon
+   trong featuredNames rồi)? Chỉ cần thêm 1 key mới vào object này,
+   đúng định dạng bên dưới.
+   ============================================================ */
+const teamData = {
+  nidoking: {
+    overview: 'Đội hình này xây dựng xung quanh Nidoking ở vai trò đặc công xuyên phá (special wallbreaker), tận dụng bộ hệ Độc/Đất khá hiếm để tạo áp lực lên nhiều đội hình phòng thủ tiêu chuẩn. Các đồng đội được chọn nhằm bù đắp tốc độ, hỗ trợ dọn hazard, và gánh vác những mối đe doạ mà Nidoking khó xử lý một mình.',
+    members: [
+      { name: 'nidoking', isAnchor: true },
+      {
+        name: 'breloom',
+        item: 'Toxic Orb', ability: 'Poison Heal', nature: 'Careful',
+        evs: '236 HP / 176 SpD / 96 Spe',
+        moves: ['Substitute', 'Spore', 'Leech Seed', 'Focus Punch'],
+        analysis: 'Breloom mang đến một hướng tấn công vật lý hoàn toàn khác so với Nidoking, giúp đội hình khó bị một Pokémon phòng thủ đơn lẻ cản phá cả hai. Spore cho phép vô hiệu hoá tạm thời mối đe doạ nguy hiểm trước khi Nidoking vào sân, còn combo Substitute + Leech Seed + Poison Heal giúp Breloom trụ sân rất lâu mà không sợ trạng thái gây hại.'
+      },
+      {
+        name: 'garchomp',
+        item: 'Choice Scarf', ability: 'Rough Skin', nature: 'Jolly',
+        evs: '252 Atk / 4 SpD / 252 Spe',
+        moves: ['Earthquake', 'Dragon Claw', 'Stone Edge', 'Iron Head'],
+        analysis: 'Nidoking không có tốc độ vượt trội, nên Garchomp mang Choice Scarf đóng vai trò "người dọn dẹp tốc độ" (revenge killer), xử lý những Pokémon nhanh đã gây thiệt hại cho đội sau khi Nidoking làm suy yếu đối phương. Bộ 4 chiêu bao phủ diện rộng giúp Garchomp hiếm khi bị bí chiêu trước một mục tiêu bất kỳ.'
+      },
+      {
+        name: 'corviknight',
+        item: 'Leftovers', ability: 'Pressure', nature: 'Impish',
+        evs: '252 HP / 252 Def / 4 SpD',
+        moves: ['Defog', 'Brave Bird', 'Roost', 'Body Press'],
+        analysis: 'Vì Nidoking không tự dọn được hazard cho bản thân, Corviknight đảm nhận vai trò dọn dẹp (Defog) và làm lá chắn vật lý bền bỉ nhờ Roost hồi phục liên tục mỗi lượt. Đây cũng là điểm tựa để đội hình gánh đỡ các đòn tấn công vật lý mạnh mà Nidoking buộc phải né tránh.'
+      },
+      {
+        name: 'toxapex',
+        item: 'Black Sludge', ability: 'Regenerator', nature: 'Calm',
+        evs: '252 HP / 252 SpD / 4 Def',
+        moves: ['Toxic Spikes', 'Scald', 'Recover', 'Haze'],
+        analysis: 'Toxapex bổ sung khả năng chống chịu đặc biệt mà Nidoking không có nhiều, đồng thời tự rải Toxic Spikes để hỗ trợ lối chơi hao mòn dần của cả đội. Đặc trưng Regenerator giúp Toxapex liên tục vào sân đỡ đòn mà không lo hao HP quá nhiều về lâu dài.'
+      },
+      {
+        name: 'rillaboom',
+        item: 'Choice Band', ability: 'Grassy Surge', nature: 'Adamant',
+        evs: '252 Atk / 4 SpD / 252 Spe',
+        moves: ['Grassy Glide', 'Wood Hammer', 'U-turn', 'Superpower'],
+        analysis: 'Grassy Terrain mà Rillaboom dựng lên âm thầm hồi một phần HP mỗi lượt cho các Pokémon đứng đất trong đội, bao gồm cả Nidoking — lợi thế nhỏ nhưng cộng dồn hiệu quả trong trận kéo dài. Grassy Glide được ưu tiên ra đòn trước cũng cho Rillaboom khả năng dọn dẹp gần giống Garchomp, nhưng ở một dải mục tiêu khác.'
+      }
+    ]
+  }
+  // Thêm đội hình cho các Pokémon nổi bật khác ở đây, theo đúng cấu trúc trên.
+};

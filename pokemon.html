@@ -1,4 +1,4 @@
-<html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
@@ -38,6 +38,21 @@
       <!-- Đây là "1 ô để phân tích + mô tả về cá thể đó" -->
       <section id="analysis-panel" class="panel analysis-panel"></section>
     </div>
+
+    <!--
+      Phần "Đội Hình Đề Xuất": 1 hàng icon (bấm để đổi) + 1 ô thông tin
+      bên dưới tự đổi nội dung theo icon đang chọn. Toàn bộ được team.js
+      vẽ ra bằng JavaScript.
+    -->
+    <section class="team-section">
+      <h2>🏆 Đội Hình Đề Xuất</h2>
+      <div class="panel team-panel">
+        <div id="team-icons" class="team-icons"></div>
+        <div id="team-info" class="team-info">
+          <p class="loading-text">Đang tải đội hình...</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -48,5 +63,6 @@
   <script src="data.js"></script>
   <script src="header-search.js"></script>
   <script src="detail.js"></script>
+  <script src="team.js"></script>
 </body>
 </html>

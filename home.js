@@ -51,8 +51,12 @@ async function renderFeaturedGrid() {
   results.forEach((poke) => {
     if (!poke) return;
     const rank = leaderboardData.findIndex(e => e.name === poke.name) + 1;
-    const primaryType = poke.types[0];
-    const color = typeColors[primaryType] || '#888';
+    // Màu viền/glow khi hover vẫn lấy theo hệ CHÍNH (types[0]) — chỉ 1 màu cho đẹp.
+    const color = typeColors[poke.types[0]] || '#888';
+    // NHƯNG hiển thị badge thì lặp qua TẤT CẢ hệ (types), vì rất nhiều Pokémon có 2 hệ.
+    const typeBadges = poke.types
+      .map(t => `<span class="type-badge" style="background:${typeColors[t]}26; color:${typeColors[t]}">${t}</span>`)
+      .join('');
 
     const card = document.createElement('a');
     card.href = `pokemon.html?name=${poke.name}`;
@@ -65,7 +69,7 @@ async function renderFeaturedGrid() {
       <div class="poke-card-body">
         <h3>${poke.displayName}</h3>
         <div class="poke-card-tags">
-          <span class="type-badge" style="background:${color}26; color:${color}">${primaryType}</span>
+          <div class="type-badges">${typeBadges}</div>
           <span class="rank-tag">Hạng #${rank > 0 ? rank : '—'}</span>
         </div>
       </div>

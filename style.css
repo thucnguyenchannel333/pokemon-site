@@ -211,6 +211,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 2rem 4rem; }
 .poke-card-body { padding: 1rem 1.1rem 1.2rem; }
 .poke-card-body h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.6rem; }
 .poke-card-tags { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.type-badges { display: flex; gap: 0.4rem; flex-wrap: wrap; }
 
 .type-badge {
   display: inline-block;
@@ -266,6 +267,72 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 2rem 4rem; }
 .mini-label { display: block; font-size: 0.75rem; color: var(--text-tertiary); margin-bottom: 0.25rem; }
 .analysis-panel p { color: var(--text-secondary); line-height: 1.75; }
 .analysis-panel code { background: var(--bg-elevated-2); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.85em; }
+
+/* ---------- Đội hình đề xuất (team.js) ---------- */
+.team-section { margin-top: 2.25rem; }
+.team-section h2 { font-size: 1.25rem; font-weight: 700; margin-bottom: 1.1rem; }
+.team-panel { padding: 1.75rem; }
+
+.team-icons { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem; }
+.team-icon {
+  width: 64px; height: 64px;
+  padding: 8px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border);
+  background: var(--bg-elevated-2);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+}
+.team-icon img { width: 100%; height: 100%; object-fit: contain; }
+.team-icon:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+.team-icon.active { border-color: var(--accent); background: var(--accent-dim); }
+
+.team-info { min-height: 110px; animation: teamFadeIn 0.25s ease; }
+@keyframes teamFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.team-overview { color: var(--text-secondary); line-height: 1.75; }
+.team-empty { color: var(--text-tertiary); font-size: 0.9rem; line-height: 1.7; }
+.team-empty code {
+  background: var(--bg-elevated-2);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+.set-header { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1.35rem; }
+.set-icon { width: 34px; height: 34px; object-fit: contain; }
+.set-header h3 { font-size: 1.05rem; font-weight: 700; }
+
+.set-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.1rem 2rem;
+  margin-bottom: 1.35rem;
+  padding-bottom: 1.35rem;
+  border-bottom: 1px solid var(--border);
+}
+.set-item { display: flex; align-items: center; gap: 0.45rem; font-weight: 700; }
+.item-icon { width: 22px; height: 22px; object-fit: contain; }
+
+.moveset-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+  margin-bottom: 1.35rem;
+}
+.move-box {
+  background: var(--bg-elevated-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.set-analysis { color: var(--text-secondary); line-height: 1.75; }
 
 /* ---------- Form đăng nhập / đăng ký ---------- */
 .auth-main {
