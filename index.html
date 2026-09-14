@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ThucNguyen | Bảng Xếp Hạng Meta</title>
-<meta name="description" content="Bảng xếp hạng tỉ lệ sử dụng và Pokemon nổi bật, dữ liệu lấy trực tiếp từ PokeAPI.">
+<title>ThucNguyen | National Dex OU</title>
+<meta name="description" content="Bảng xếp hạng tỉ lệ sử dụng National Dex OU và thư viện Pokémon, dữ liệu từ Smogon và PokeAPI.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,7 +16,8 @@
     <a href="index.html" class="logo">Thuc<span>Nguyen</span></a>
     <div class="header-right">
       <div class="search-wrap">
-        <input type="text" id="site-search" placeholder="Tìm Pokémon..." autocomplete="off">
+        <span class="search-icon-lead" aria-hidden="true">🔍</span>
+        <input type="text" id="site-search" placeholder="Search..." autocomplete="off">
         <div id="search-dropdown" class="search-dropdown"></div>
       </div>
       <a href="login.html" class="btn-ghost">Login</a>
@@ -25,40 +26,69 @@
   </header>
 
   <main>
-    <section class="page-intro">
-      <h1>Bảng Xếp Hạng Meta</h1>
-      <p>Theo dõi tỉ lệ sử dụng và tỉ lệ thắng của các Pokémon phổ biến nhất, cùng bộ sưu tập những cái tên nổi bật nhất mùa này.</p>
+    <!-- Tiêu đề lớn đầu trang -->
+    <section class="hero">
+      <h1 class="hero-title">NATIONAL DEX <span>OU</span></h1>
+      <p class="hero-sub">Khám phá các chiến thuật hàng đầu, đội hình tiêu biểu và chỉ số chi tiết của từng Pokémon trong format National Dex OU.</p>
     </section>
 
+    <!-- Bảng xếp hạng tỉ lệ sử dụng -->
     <section class="leaderboard-section">
-      <h2>🏆 Bảng Xếp Hạng Sử Dụng</h2>
+      <div class="section-head">
+        <h2>👑 Top Meta Pokémon</h2>
+        <span class="month-chip">📅 Tháng 8, 2026</span>
+      </div>
+      <p class="section-note" id="usage-note"></p>
+
       <div class="table-wrap">
         <table class="leaderboard-table">
           <thead>
             <tr>
               <th>#</th>
-              <th>Pokemon</th>
-              <th>Tỉ lệ sử dụng</th>
-              <th>Tỉ lệ thắng</th>
+              <th>POKÉMON</th>
+              <th>USAGE</th>
             </tr>
           </thead>
           <tbody id="leaderboard-body">
-            <tr id="leaderboard-loading"><td colspan="4" class="loading-text">Đang tải dữ liệu từ PokeAPI...</td></tr>
+            <tr id="leaderboard-loading"><td colspan="3" class="loading-text">Đang tải dữ liệu từ PokeAPI...</td></tr>
           </tbody>
         </table>
+        <button type="button" id="rankings-toggle" class="rankings-toggle">Xem đầy đủ bảng xếp hạng</button>
       </div>
     </section>
 
-    <section class="featured-section">
-      <h2>Nổi Bật</h2>
+    <!--
+      Khối "All Pokémon": bấm tiêu đề để mở ra bộ lọc theo hệ.
+      Tích vào ô vuông của một hệ → lưới bên dưới chỉ còn Pokémon thuộc hệ đó.
+    -->
+    <section class="featured-section" id="all-pokemon-section">
+      <button type="button" id="all-pokemon-toggle" class="all-toggle" aria-expanded="false">
+        <span class="all-toggle-label">All Pokémon</span>
+        <span class="count-pill" id="all-pokemon-count">0</span>
+        <span class="chevron" aria-hidden="true">⌃</span>
+      </button>
+
+      <div class="filter-panel">
+        <button type="button" id="clear-filters" class="clear-filters">✕ Xoá toàn bộ bộ lọc</button>
+        <div class="filter-group">
+          <div class="filter-group-head">
+            <span class="branch" aria-hidden="true">↳</span>
+            <strong>Type</strong>
+            <span class="count-pill" id="type-filter-count">0</span>
+          </div>
+          <div class="type-list" id="type-list"></div>
+        </div>
+      </div>
+
       <div id="featured-grid" class="featured-grid">
         <p class="loading-text">Đang tải...</p>
       </div>
+      <p id="grid-empty" class="grid-empty">Không có Pokémon nào thuộc hệ đã chọn.</p>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>Website này được thiết kế bởi <strong>ThucNguyen</strong>, sinh viên ngành Công nghệ Thông tin, dự án như một bài thực hành về HTML, CSS, JavaScript. Nguồn dữ liệu từ PokeAPI.</p>
+    <p>Website này được thiết kế bởi <strong>ThucNguyen</strong>, sinh viên ngành Công nghệ Thông tin, dự án như một bài thực hành về HTML, CSS, JavaScript. Nguồn dữ liệu: PokeAPI (chỉ số &amp; hình ảnh) và Smogon University (tỉ lệ sử dụng).</p>
     <p class="footer-copyright">© 2026 ThucNguyen. Dữ liệu Pokémon và hình ảnh thuộc bản quyền Nintendo/Game Freak, chỉ dùng cho mục đích học tập, nghiên cứu, phát triển.</p>
   </footer>
 

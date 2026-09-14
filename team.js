@@ -1,44 +1,38 @@
 /* ============================================================
    team.js — chỉ chạy trên pokemon.html.
-   Vẽ hàng icon "Đội Hình Đề Xuất" + ô thông tin có thể đổi nội dung
-   khi bấm vào từng icon. Nạp SAU data.js (cần teamData, getPokemon,
-   getItemSprite).
-
-   Cách hoạt động:
-   - Đọc tên Pokémon từ URL (?name=...), giống detail.js.
-   - Tra trong teamData xem Pokémon này có đội hình mẫu không.
-   - Vẽ icon cho từng thành viên (lấy sprite qua getPokemon()).
-   - Icon #1 (chính Pokémon đang xem) mặc định đang "active", ô thông
-     tin hiện bài phân tích tổng quan về đội hình.
-   - Bấm vào icon khác → đổi "active" + đổi nội dung ô thông tin thành
-     "ô chi tiết" của thành viên đó (item/ability/nature/evs/moveset
-     + bài phân tích riêng) — đúng yêu cầu "trigger khi bấm vào icon".
+   Vẽ khối "Top Meta Teams" bên phải, gồm:
+     - Tiêu đề đội hình + người đăng + nút Pokepaste (nếu có)
+     - Hàng 6 icon Pokémon (bấm để đổi)
+     - Ô Analysis bên dưới tự đổi nội dung theo icon đang chọn:
+         · icon anchor  → bài phân tích tổng quan về đội hình
+         · icon khác    → ITEM / ABILITY / NATURE / EVS / MOVESET + phân tích riêng
+   Tên Pokémon trong mọi bài phân tích được thay bằng ICON (withPokemonIcons).
+   Nạp SAU data.js.
    ============================================================ */
 
 async function renderTeamSection() {
   const params = new URLSearchParams(window.location.search);
   const name = (params.get('name') || '').toLowerCase();
 
-  const iconsWrap = document.querySelector('#team-icons');
-  const infoWrap = document.querySelector('#team-info');
-  if (!iconsWrap || !infoWrap) return;
+  const wrap = document.querySelector('#team-wrap');
+  if (!wrap) return;
 
-  const team = teamData[name];
+  // getTeamFor() nhận key viết hoa hay thường đều được, và tự gộp mục anchor.
+  const team = getTeamFor(name);
 
-  // Chưa có dữ liệu đội hình mẫu cho Pokémon này -> hiện thông báo rõ ràng,
-  // KHÔNG để trống trơn trông như lỗi.
-  if (!team) {
-    iconsWrap.innerHTML = '';
-    infoWrap.innerHTML = `
-      <p class="team-empty">
-        Đội hình đề xuất cho Pokémon này chưa có trong dữ liệu mẫu.
-        Hãy thêm một mục mới vào <code>teamData</code> trong <code>data.js</code>
-        (xem cấu trúc mẫu của <code>nidoking</code>) để bổ sung.
-      </p>`;
+  if (!team || !team.members || team.members.length === 0) {
+    wrap.innerHTML = `
+      <div class="panel team-panel">
+        <p class="team-empty">
+          Chưa có đội hình mẫu cho Pokémon này. Thêm một mục mới vào
+          <code>teamData</code> trong <code>data.js</code> — có thể dán thẳng
+          nội dung từ pokepast.es qua trường <code>paste</code>.
+        </p>
+      </div>`;
     return;
   }
 
-  // Lấy sprite cho từng thành viên trong đội hình (song song).
+  // Lấy ảnh cho từng thành viên (gọi song song cho nhanh).
   const members = await Promise.all(
     team.members.map(async (m) => {
       const poke = await getPokemon(m.name);
@@ -50,62 +44,109 @@ async function renderTeamSection() {
     })
   );
 
-  iconsWrap.innerHTML = members
-    .map(
-      (m, i) => `
-      <button class="team-icon${i === 0 ? ' active' : ''}" type="button" data-index="${i}" aria-label="${m.displayName}">
-        <img src="${m.sprite}" alt="${m.displayName}" loading="lazy">
-      </button>`
-    )
-    .join('');
+  const startIndex = Math.max(0, members.findIndex(m => m.isAnchor));
+
+  wrap.innerHTML = `
+    <div class="panel team-panel">
+      <div class="team-head">
+        <div>
+          <h3 class="team-title">${escapeHtml(team.title || 'Đội Hình Đề Xuất')}</h3>
+          <p class="team-author">Posted by ${escapeHtml(team.author || 'ThucNguyen')}</p>
+        </div>
+        <span class="lang-badge">VN</span>
+      </div>
+
+      <div id="team-icons" class="team-icons">
+        ${members.map((m, i) => `
+          <button class="team-icon${i === startIndex ? ' active' : ''}" type="button"
+                  data-index="${i}" aria-label="${escapeHtml(m.displayName)}">
+            <img src="${m.sprite}" alt="${escapeHtml(m.displayName)}" loading="lazy">
+          </button>`).join('')}
+      </div>
+
+      <div id="team-info" class="team-info"></div>
+
+      ${team.pokepasteUrl ? `
+        <div class="team-foot">
+          <a class="pokepaste-link" href="${escapeHtml(team.pokepasteUrl)}" target="_blank" rel="noopener">
+            📄 Xem trên Pokepaste
+          </a>
+        </div>` : ''}
+    </div>
+  `;
+
+  const iconsWrap = wrap.querySelector('#team-icons');
+  const infoWrap = wrap.querySelector('#team-info');
 
   async function showMember(index) {
     const m = members[index];
 
-    // Cập nhật icon nào đang được chọn.
     iconsWrap.querySelectorAll('.team-icon').forEach((btn, i) => {
       btn.classList.toggle('active', i === index);
     });
 
-    // Icon đầu tiên = chính Pokémon đang xem -> hiện bài phân tích tổng quan.
-    if (m.isAnchor) {
-      infoWrap.innerHTML = `<p class="team-overview">${team.overview}</p>`;
+    // Không có bộ set chi tiết → chỉ hiện phần tổng quan của đội hình.
+    if (!m.moves || m.moves.length === 0) {
+      infoWrap.innerHTML = `
+        <div class="analysis-block">
+          <h4 class="analysis-heading">📈 Analysis</h4>
+          <p>${withPokemonIcons(team.overview || '')}</p>
+        </div>`;
+      await hydratePokemonIcons(infoWrap);
       return;
     }
 
-    // Các icon còn lại -> hiện "ô chi tiết": tên + item + ability + nature
-    // + EVs + 4 ô moveset + bài phân tích riêng.
     infoWrap.innerHTML = `
-      <div class="set-header">
-        <img class="set-icon" src="${m.sprite}" alt="">
-        <h3>${m.displayName} — Chi Tiết Bộ Set</h3>
-      </div>
-      <div class="set-grid">
-        <div>
-          <span class="mini-label">ITEM</span>
-          <div class="set-item"><img class="item-icon" alt=""><span>${m.item}</span></div>
+      <div class="set-block">
+        <div class="set-header">
+          <img class="set-icon" src="${m.sprite}" alt="">
+          <h4>${escapeHtml(m.displayName)} Details</h4>
         </div>
-        <div><span class="mini-label">ABILITY</span><strong>${m.ability}</strong></div>
-        <div><span class="mini-label">NATURE</span><strong>${m.nature}</strong></div>
-        <div><span class="mini-label">EVS</span><strong>${m.evs}</strong></div>
+
+        <div class="set-grid">
+          <div>
+            <span class="mini-label">ITEM</span>
+            <div class="set-item">
+              <img class="item-icon" alt="">
+              <span>${escapeHtml(m.item || '—')}</span>
+            </div>
+          </div>
+          <div><span class="mini-label">ABILITY</span><strong>${escapeHtml(m.ability || '—')}</strong></div>
+          <div><span class="mini-label">NATURE</span><strong>${escapeHtml(m.nature || '—')}</strong></div>
+          <div><span class="mini-label">EVS</span><strong>${escapeHtml(m.evs || '—')}</strong></div>
+        </div>
+
+        <span class="mini-label">MOVESET</span>
+        <div class="moveset-grid">
+          ${m.moves.map(mv => `<div class="move-box">${escapeHtml(mv)}</div>`).join('')}
+        </div>
       </div>
-      <div class="moveset-grid">
-        ${m.moves.map((mv) => `<div class="move-box">${mv}</div>`).join('')}
+
+      <div class="analysis-block">
+        <h4 class="analysis-heading">📈 Analysis</h4>
+        <p>${withPokemonIcons(m.analysis || 'Chưa có bài phân tích cho Pokémon này trong đội hình.')}</p>
       </div>
-      <p class="set-analysis">${m.analysis}</p>
     `;
 
-    // Nạp icon vật phẩm riêng (không chặn phần còn lại hiển thị).
-    const itemImg = infoWrap.querySelector('.item-icon');
-    const sprite = await getItemSprite(m.item);
-    if (sprite && itemImg) itemImg.src = sprite;
+    await hydratePokemonIcons(infoWrap);
+
+    // Nạp icon vật phẩm (không chặn phần còn lại hiển thị).
+    if (m.item) {
+      const itemImg = infoWrap.querySelector('.item-icon');
+      const sprite = await getItemSprite(m.item);
+      if (sprite && itemImg) itemImg.src = sprite;
+      else if (itemImg) itemImg.remove();
+    } else {
+      const itemImg = infoWrap.querySelector('.item-icon');
+      if (itemImg) itemImg.remove();
+    }
   }
 
   iconsWrap.querySelectorAll('.team-icon').forEach((btn) => {
     btn.addEventListener('click', () => showMember(Number(btn.dataset.index)));
   });
 
-  showMember(0);
+  showMember(startIndex);
 }
 
 renderTeamSection();

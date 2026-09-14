@@ -1,8 +1,7 @@
 /* ============================================================
    detail.js — chỉ chạy trên pokemon.html (trang phụ chi tiết).
-   Đọc tên Pokémon từ URL (?name=...), gọi PokeAPI, rồi vẽ:
-     - Ô bên trái: tên + icon + 6 chỉ số (HP/ATK/DEF/SPA/SPD/SPE)
-     - Ô bên phải: phân tích + mô tả
+   Vẽ Ô BÊN TRÁI: tên + số Pokédex + ảnh lớn + badge hệ + 6 chỉ số
+   (HP/ATK/DEF/SPA/SPD/SPE), theo đúng bố cục trong ảnh "Zapdos".
    Nạp SAU data.js.
    ============================================================ */
 
@@ -11,27 +10,29 @@ async function renderDetail() {
   const name = (params.get('name') || '').toLowerCase();
 
   const statPanel = document.querySelector('#stat-panel');
-  const analysisPanel = document.querySelector('#analysis-panel');
+  if (!statPanel) return;
 
   if (!name) {
-    statPanel.innerHTML = '<p>Chưa chọn Pokémon nào. Hãy quay lại trang chính và chọn một Pokémon để xem chi tiết.</p>';
-    analysisPanel.innerHTML = '';
+    statPanel.innerHTML = '<p class="loading-text">Chưa chọn Pokémon nào. Hãy quay lại trang chính và chọn một Pokémon.</p>';
     return;
   }
 
   const poke = await getPokemon(name);
 
   if (!poke) {
-    statPanel.innerHTML = `<p>Không tìm thấy Pokémon "<strong>${name}</strong>". Kiểm tra lại tên trong đường dẫn (ví dụ: pokemon.html?name=zapdos).</p>`;
-    analysisPanel.innerHTML = '';
+    statPanel.innerHTML = `<p class="loading-text">Không tìm thấy Pokémon "<strong>${escapeHtml(name)}</strong>". Kiểm tra lại tên trong đường dẫn (ví dụ: pokemon.html?name=zapdos).</p>`;
     return;
   }
 
-  document.title = poke.displayName + ' | MetaDex';
+  document.title = poke.displayName + ' | ThucNguyen';
 
   const primaryColor = typeColors[poke.types[0]] || '#F2B90C';
+
+  // Đổ màu nền mờ + viền của ô theo hệ chính — mỗi Pokémon một sắc riêng.
+  statPanel.style.setProperty('--poke-color', primaryColor);
+
   const statsList = [
-    ['HP', poke.stats.hp],
+    ['HP',  poke.stats.hp],
     ['ATK', poke.stats.atk],
     ['DEF', poke.stats.def],
     ['SPA', poke.stats.spa],
@@ -40,38 +41,47 @@ async function renderDetail() {
   ];
 
   statPanel.innerHTML = `
-    <h1 class="detail-name" style="color:${primaryColor}">${poke.displayName}</h1>
-    <span class="detail-dex">#${String(poke.id).padStart(3, '0')}</span>
-    <img class="detail-art" src="${poke.officialArt}" alt="${poke.displayName}">
-    <div class="detail-types">
-      ${poke.types.map(t => `<span class="type-badge" style="background:${typeColors[t]}26; color:${typeColors[t]}">${t.toUpperCase()}</span>`).join('')}
+    <div class="detail-head">
+      <h1 class="detail-name" style="color:${primaryColor}">${poke.displayName.toUpperCase()}</h1>
+      <span class="detail-dex">#${String(poke.id).padStart(3, '0')}</span>
     </div>
+
+    <div class="detail-art-wrap">
+      <img class="detail-art" src="${poke.officialArt}" alt="${poke.displayName}">
+    </div>
+
+    <div class="detail-types">
+      ${poke.types.map(t => `
+        <span class="type-badge type-badge--solid" style="background:${typeColors[t]}">${t.toUpperCase()}</span>
+      `).join('')}
+    </div>
+
     <div class="stat-bars">
       ${statsList.map(([label, val]) => `
         <div class="stat-row">
           <span class="stat-label">${label}</span>
-          <div class="stat-bar"><div class="stat-bar-fill" style="width:${Math.min(100, (val / 200) * 100)}%; background:${primaryColor}"></div></div>
+          <div class="stat-bar">
+            <div class="stat-bar-fill" style="width:${Math.min(100, (val / 200) * 100)}%; background:${primaryColor}"></div>
+          </div>
           <span class="stat-value">${val}</span>
         </div>
       `).join('')}
     </div>
   `;
 
-  // usage/winRate + bài phân tích là dữ liệu RIÊNG (không có trên PokeAPI),
-  // nên chỉ hiện được nếu Pokémon này nằm trong leaderboardData / analysisText.
-  const entry = leaderboardData.find(e => e.name === poke.name);
-  const analysis = analysisText[poke.name];
-
-  analysisPanel.innerHTML = `
-    <h2>Phân Tích &amp; Mô Tả</h2>
-    ${entry ? `
-      <div class="analysis-stats-row">
-        <div><span class="mini-label">Tỉ lệ sử dụng</span><strong>${entry.usage}%</strong></div>
-        <div><span class="mini-label">Tỉ lệ thắng</span><strong class="${entry.winRate >= 50 ? 'win-good' : 'win-bad'}">${entry.winRate}%</strong></div>
+  // Nếu Pokémon này có trong bảng xếp hạng, hiện thêm dòng tỉ lệ sử dụng thật.
+  const entry = leaderboardData.find(e => e.name === poke.name || e.name === name);
+  const usageEl = document.querySelector('#detail-usage');
+  if (entry && usageEl) {
+    usageEl.innerHTML = `
+      <span class="mini-label">TỈ LỆ SỬ DỤNG — ${USAGE_META.format}, ${USAGE_META.month}</span>
+      <div class="usage-cell">
+        <strong>${entry.usage}%</strong>
+        <div class="usage-bar"><div class="usage-bar-fill" style="width:${Math.min(100, entry.usage * 4)}%"></div></div>
       </div>
-    ` : ''}
-    <p>${analysis || 'Chưa có bài phân tích cho Pokémon này trong dữ liệu mẫu. Hãy tự viết nội dung của bạn trong biến <code>analysisText</code> ở file data.js.'}</p>
-  `;
+    `;
+    usageEl.classList.add('show');
+  }
 }
 
 renderDetail();

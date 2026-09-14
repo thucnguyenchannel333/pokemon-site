@@ -17,34 +17,112 @@
         trong tin nhắn để biết cách thay bằng số liệu thật từ Smogon.
    ============================================================ */
 
-// ---------- 1) Danh sách 50 Pokémon cho Bảng Xếp Hạng ----------
-// Thêm/bớt tên ở đây để đổi danh sách. Tên phải viết thường, đúng theo
-// PokeAPI (ví dụ dạng nhiều từ dùng dấu gạch ngang: "landorus-therian").
-const leaderboardNames = [
-  'zapdos', 'dragonite', 'tyranitar', 'gengar', 'clefable',
-  'garchomp', 'metagross', 'ferrothorn', 'slowbro', 'toxapex',
-  'landorus', 'corviknight', 'dragapult', 'hydreigon', 'weavile',
-  'nidoking', 'salamence', 'greninja', 'lucario', 'excadrill',
-  'volcarona', 'rillaboom', 'cinderace', 'urshifu', 'heatran',
-  'gliscor', 'hippowdon', 'scizor', 'mimikyu', 'zoroark',
-  'azumarill', 'breloom', 'conkeldurr', 'skarmory', 'alakazam',
-  'gyarados', 'blissey', 'chansey', 'nidoqueen', 'magnezone',
-  'starmie', 'snorlax', 'thundurus', 'tornadus', 'registeel',
-  'celesteela', 'kartana', 'rotom', 'articuno', 'moltres'
+/* ---------- 1) BẢNG XẾP HẠNG — SỐ LIỆU SỬ DỤNG THẬT ----------
+
+   NGUỒN: Smogon University usage stats (https://www.smogon.com/stats/)
+   FORMAT: gen9nationaldex (National Dex OU) — mốc xếp hạng 1760
+   THÁNG:  08/2026  (Smogon công bố ngày 01/09/2026)
+   Đối chiếu qua Pikalytics (https://www.pikalytics.com/pokedex/gen9nationaldex),
+   một trang chuyên đọc lại đúng file thống kê của Smogon.
+
+   LƯU Ý QUAN TRỌNG VỀ "WIN RATE":
+   Smogon KHÔNG công bố tỉ lệ thắng cho từng Pokémon — file thống kê chỉ có
+   Usage %, Raw count và Real count. Cột "Win Rate" ở trang bạn tham khảo lấy
+   từ Pokémon Revolution Online (PRO), một game khác hẳn. Vì vậy mình đã BỎ
+   cột win rate thay vì bịa số, và chỉ giữ Usage % là số liệu thật.
+
+   Đây là 25 Pokémon đầu bảng mà mình kiểm chứng được. Muốn đủ 50+, dùng công
+   cụ dán dữ liệu ở mục 2 bên dưới — chỉ mất khoảng 30 giây.
+   ------------------------------------------------------------ */
+const USAGE_META = {
+  format: 'National Dex OU',
+  formatId: 'gen9nationaldex',
+  month: 'Tháng 8, 2026',
+  cutoff: '1760',
+  sourceUrl: 'https://www.smogon.com/stats/2026-08/'
+};
+
+// name: tên đúng theo PokeAPI (chữ thường, nối bằng dấu gạch ngang)
+// label: tên hiển thị đúng như Smogon gọi
+// usage: % số đội hình có mang Pokémon này
+const leaderboardData = [
+  { name: 'alomomola',              label: 'Alomomola',            usage: 22.46 },
+  { name: 'zamazenta',              label: 'Zamazenta',            usage: 20.55 },
+  { name: 'gholdengo',              label: 'Gholdengo',            usage: 18.29 },
+  { name: 'terapagos',              label: 'Terapagos',            usage: 17.18 },
+  { name: 'kingambit',              label: 'Kingambit',            usage: 16.55 },
+  { name: 'landorus-therian',       label: 'Landorus-Therian',     usage: 16.35 },
+  { name: 'gliscor',                label: 'Gliscor',              usage: 16.27 },
+  { name: 'great-tusk',             label: 'Great Tusk',           usage: 13.94 },
+  { name: 'zapdos',                 label: 'Zapdos',               usage: 13.74 },
+  { name: 'raging-bolt',            label: 'Raging Bolt',          usage: 13.62 },
+  { name: 'dragonite',              label: 'Dragonite',            usage: 13.07 },
+  { name: 'garchomp',               label: 'Garchomp',             usage: 12.86 },
+  { name: 'ogerpon-wellspring-mask',label: 'Ogerpon-Wellspring',   usage: 12.77 },
+  { name: 'iron-treads',            label: 'Iron Treads',          usage: 11.68 },
+  { name: 'scizor-mega',            label: 'Scizor-Mega',          usage: 10.90 },
+  { name: 'kyurem',                 label: 'Kyurem',               usage: 10.27 },
+  { name: 'tapu-lele',              label: 'Tapu Lele',            usage: 9.85 },
+  { name: 'corviknight',            label: 'Corviknight',          usage: 9.46 },
+  { name: 'iron-valiant',           label: 'Iron Valiant',         usage: 9.41 },
+  { name: 'diancie-mega',           label: 'Diancie-Mega',         usage: 9.03 },
+  { name: 'toxapex',                label: 'Toxapex',              usage: 8.87 },
+  { name: 'tornadus-therian',       label: 'Tornadus-Therian',     usage: 8.16 },
+  { name: 'urshifu-rapid-strike',   label: 'Urshifu-Rapid-Strike', usage: 8.12 },
+  { name: 'hatterene',              label: 'Hatterene',            usage: 8.03 },
+  { name: 'ferrothorn',             label: 'Ferrothorn',           usage: 7.96 }
 ];
 
-// ---------- 2) Số liệu thi đấu MINH HOẠ (KHÔNG PHẢI số thật) ----------
-// Hàm này tự sinh ra usage% giảm dần + winRate% dao động quanh 50%,
-// chỉ để bảng có nội dung hiển thị ngay. Hãy thay bằng số liệu thật
-// (xem hướng dẫn) khi dùng cho mục đích thật.
-function buildDemoStats(names) {
-  return names.map((name, i) => {
-    const usage = Math.max(4, 42 - i * 0.7 - (i % 5)).toFixed(1);
-    const winRate = (50 + ((name.length * 7 + i * 3) % 17) - 8).toFixed(1);
-    return { name, usage: Number(usage), winRate: Number(winRate) };
-  });
+/* ---------- 2) CÔNG CỤ: DÁN BẢNG THỐNG KÊ SMOGON ĐỂ TỰ SINH DỮ LIỆU ----------
+
+   CÁCH LẤY ĐỦ 50 (hoặc bao nhiêu tuỳ bạn), mất khoảng 30 giây:
+
+   B1. Mở https://www.smogon.com/stats/  → chọn thư mục tháng mới nhất
+       (ví dụ 2026-08/).
+   B2. Tải file "gen9nationaldex-1760.txt.gz" rồi giải nén ra .txt
+       (Windows: chuột phải → Extract, hoặc dùng 7-Zip).
+   B3. Mở file .txt, bôi đen các dòng trong bảng (dạng
+       " | 1 | Alomomola | 22.4612% | ... "), copy.
+   B4. Mở trang web của bạn, nhấn F12 → tab Console, gõ:
+          copy(buildLeaderboardFromSmogon(`  <dán vào đây>  `))
+       Kết quả đã được copy sẵn vào clipboard — dán đè lên mảng
+       leaderboardData ở mục 1 phía trên là xong.
+
+   Hàm này cũng tự đổi tên Smogon sang tên PokeAPI (ví dụ
+   "Landorus-Therian" → "landorus-therian", "Scizor-Mega" → "scizor-mega").
+   ------------------------------------------------------------ */
+function smogonNameToApiName(label) {
+  return label
+    .trim()
+    .toLowerCase()
+    .replace(/[.'’:]/g, '')      // bỏ dấu chấm, nháy (Mr. Mime, Farfetch'd...)
+    .replace(/\s+/g, '-')        // khoảng trắng → gạch ngang
+    .replace(/-+/g, '-');
 }
-const leaderboardData = buildDemoStats(leaderboardNames);
+
+function buildLeaderboardFromSmogon(rawText, limit = 50) {
+  const rows = [];
+  rawText.split('\n').forEach(line => {
+    // Dòng hợp lệ có dạng: | 1 | Alomomola | 22.4612% | 123456 | ...
+    const m = line.match(/^\s*\|\s*(\d+)\s*\|\s*([^|]+?)\s*\|\s*([\d.]+)%/);
+    if (!m) return;
+    const label = m[2].trim();
+    rows.push({
+      name: smogonNameToApiName(label),
+      label,
+      usage: Number(Number(m[3]).toFixed(2))
+    });
+  });
+
+  const sliced = rows.slice(0, limit);
+  const body = sliced
+    .map(r => `  { name: '${r.name}', label: '${r.label.replace(/'/g, "\\'")}', usage: ${r.usage} }`)
+    .join(',\n');
+  return 'const leaderboardData = [\n' + body + '\n];';
+}
+
+// Danh sách tên phẳng — một số phần khác của trang dùng lại (ví dụ ô tìm kiếm).
+const leaderboardNames = leaderboardData.map(e => e.name);
 
 // ---------- 3) 8 Pokémon được chọn để hiển thị đầy đủ ----------
 // (khối ô vuông ở trang chính + có trang chi tiết riêng)
@@ -147,25 +225,45 @@ function getStatValue(statsArr, key) {
   return found ? found.base_stat : 0;
 }
 
+/* Chọn ảnh ĐẸP NHẤT có sẵn cho 1 Pokémon.
+   Thứ tự ưu tiên:
+     1. Pokémon HOME  — ảnh render nét, viền sạch (ảnh "mới" bạn muốn dùng)
+     2. Official artwork — tranh vẽ chính thức
+     3. front_default — sprite pixel đời cũ (ảnh "cũ", chỉ dùng khi 2 cái trên không có)
+   Nhờ vậy TOÀN BỘ ảnh Pokémon trên web đều tự động dùng bản nét nhất. */
+function pickArtwork(sprites) {
+  const other = sprites.other || {};
+  return (
+    (other.home && other.home.front_default) ||
+    (other['official-artwork'] && other['official-artwork'].front_default) ||
+    sprites.front_default
+  );
+}
+
 async function getPokemon(name) {
   const key = name.toLowerCase();
   if (_pokeCache[key]) return _pokeCache[key];
 
   try {
-    const res = await fetch(POKEAPI_BASE + key);
+    let res = await fetch(POKEAPI_BASE + key);
+
+    // Một số dạng đặc biệt (mega, form vùng miền) có thể đặt tên khác trên
+    // PokeAPI. Nếu tra không ra, thử lại bằng tên gốc trước dấu gạch đầu tiên
+    // để trang không bị trống một dòng.
+    if (!res.ok && key.includes('-')) {
+      res = await fetch(POKEAPI_BASE + key.split('-')[0]);
+    }
     if (!res.ok) throw new Error('Không tìm thấy Pokémon: ' + key);
     const raw = await res.json();
 
+    const artwork = pickArtwork(raw.sprites);
     const poke = {
       name: raw.name,
       displayName: capitalize(raw.name),
       id: raw.id,
-      sprite: raw.sprites.front_default,
-      officialArt:
-        (raw.sprites.other &&
-          raw.sprites.other['official-artwork'] &&
-          raw.sprites.other['official-artwork'].front_default) ||
-        raw.sprites.front_default,
+      sprite: artwork,        // dùng cho icon nhỏ (bảng xếp hạng, ô tìm kiếm...)
+      officialArt: artwork,   // dùng cho ảnh lớn (thẻ Pokémon, trang chi tiết)
+      pixelSprite: raw.sprites.front_default, // giữ lại phòng khi cần sprite cũ
       types: raw.types
         .sort((a, b) => a.slot - b.slot)
         .map(t => t.type.name),
@@ -380,3 +478,207 @@ const teamData = {
     ]
   }
 };
+
+/* ============================================================
+   10) POKEPASTE — NHẬP BỘ SET TỰ ĐỘNG THAY VÌ GÕ TAY
+
+   Bạn hỏi: có thể nhập dữ liệu trên pokepast.es rồi truyền sang web không?
+   Trả lời ngắn: ĐƯỢC, và đây là cách làm.
+
+   Vì sao không gọi thẳng pokepast.es bằng fetch() được?
+   → Trình duyệt chặn việc một trang web tự đọc nội dung của trang web khác
+     (quy tắc CORS). pokepast.es không mở quyền đó cho web ngoài, nên gọi
+     trực tiếp sẽ bị chặn. Đây là giới hạn của trình duyệt, không phải lỗi code.
+
+   Vậy nên có 2 cách dùng, cả hai đều hoạt động ngay:
+
+   CÁCH A (khuyên dùng — dán thẳng nội dung):
+     1. Lên pokepast.es, xây đội hình như bình thường.
+     2. Bấm nút copy / bôi đen toàn bộ khung text của paste đó, copy.
+     3. Trong teamData, thay vì gõ tay từng members, chỉ cần viết:
+
+          zapdos: {
+            overview: '...',
+            pokepasteUrl: 'https://pokepast.es/abc123',   // để hiện nút link
+            paste: `
+        Zapdos @ Heavy-Duty Boots
+        Ability: Static
+        EVs: 252 HP / 148 Def / 108 Spe
+        Bold Nature
+        - Volt Switch
+        - Heat Wave
+        - Defog
+        - Roost
+
+        Ferrothorn @ Leftovers
+        ...
+            `,
+            analyses: {                     // bài phân tích riêng cho từng con
+              zapdos: 'Đóng vai trò mắt xích luân chuyển...',
+              ferrothorn: '...'
+            }
+          }
+
+     Hàm parseShowdownPaste() bên dưới sẽ tự tách ra item / ability /
+     nature / EVs / moveset cho từng Pokémon. Bạn chỉ còn phải viết
+     phần phân tích — thứ mà máy không viết hộ được.
+
+   CÁCH B (nếu bạn tự làm backend sau này):
+     pokepast.es cho phép thêm "/json" vào cuối link (ví dụ
+     https://pokepast.es/abc123/json) để lấy dữ liệu dạng JSON. Gọi từ
+     PHP/Node ở phía máy chủ thì KHÔNG bị CORS chặn. Khi bạn học tới phần
+     backend, đây là hướng để tự động hoá hoàn toàn.
+   ============================================================ */
+
+// Tách 1 đoạn text theo định dạng Pokémon Showdown thành mảng object.
+function parseShowdownPaste(pasteText) {
+  if (!pasteText || typeof pasteText !== 'string') return [];
+
+  // Mỗi Pokémon cách nhau bằng 1 dòng trống.
+  const blocks = pasteText.trim().split(/\n\s*\n/);
+
+  return blocks.map(block => {
+    const lines = block.split('\n').map(l => l.trim()).filter(Boolean);
+    if (lines.length === 0) return null;
+
+    const set = { name: '', item: '', ability: '', nature: '', evs: '', moves: [] };
+
+    // Dòng đầu: "Tên @ Vật phẩm"  (phần "@ Vật phẩm" có thể không có)
+    const headParts = lines[0].split('@');
+    if (headParts[1]) set.item = headParts[1].trim();
+
+    // Bỏ ký hiệu giới tính "(M)" / "(F)" TRƯỚC, nếu không dòng
+    // "Sparky (Garchomp) (M)" sẽ bị hiểu nhầm tên là "M".
+    let nameRaw = headParts[0].replace(/\s*\((?:M|F)\)\s*$/i, '').trim();
+
+    // Nếu còn ngoặc ở cuối thì đó là biệt danh: "Biệt danh (Tên thật)"
+    const nickMatch = nameRaw.match(/\(([^)]+)\)\s*$/);
+    set.name = (nickMatch ? nickMatch[1] : nameRaw).trim();
+
+    lines.slice(1).forEach(line => {
+      if (line.startsWith('-')) {
+        set.moves.push(line.replace(/^-\s*/, '').trim());
+      } else if (/^Ability:/i.test(line)) {
+        set.ability = line.split(':')[1].trim();
+      } else if (/^EVs:/i.test(line)) {
+        set.evs = line.split(':')[1].trim();
+      } else if (/Nature\s*$/i.test(line)) {
+        set.nature = line.replace(/Nature\s*$/i, '').trim();
+      }
+    });
+
+    return set;
+  }).filter(Boolean);
+}
+
+/* Chuẩn hoá 1 mục trong teamData về dạng mà team.js dùng được.
+   Xử lý gọn 3 việc, để bạn viết teamData thoải mái hơn:
+     - Key viết hoa hay thường đều nhận ('Zapdos' = 'zapdos').
+     - Nếu có 'paste', tự tách set từ đó rồi ghép bài phân tích trong 'analyses'.
+     - Nếu members có 1 mục đánh dấu isAnchor trùng tên với 1 mục đầy đủ phía
+       sau, gộp lại làm 1 (tránh hiện 2 icon giống nhau trên hàng đội hình). */
+function normalizeTeam(team) {
+  if (!team) return null;
+
+  let members = [];
+
+  if (team.paste) {
+    const analyses = team.analyses || {};
+    members = parseShowdownPaste(team.paste).map(set => ({
+      ...set,
+      analysis: analyses[set.name.toLowerCase()] || ''
+    }));
+  } else {
+    members = (team.members || []).slice();
+  }
+
+  // Gộp mục anchor rỗng với mục đầy đủ cùng tên.
+  const anchorIndex = members.findIndex(m => m.isAnchor);
+  if (anchorIndex !== -1) {
+    const anchorName = (members[anchorIndex].name || '').toLowerCase();
+    const fullIndex = members.findIndex(
+      (m, i) => i !== anchorIndex && (m.name || '').toLowerCase() === anchorName && m.moves
+    );
+    if (fullIndex !== -1) {
+      members[fullIndex] = { ...members[fullIndex], isAnchor: true };
+      members.splice(anchorIndex, 1);
+    }
+  }
+
+  return { ...team, members };
+}
+
+// Bảng tra cứu không phân biệt hoa/thường cho teamData.
+function getTeamFor(pokemonName) {
+  const wanted = String(pokemonName || '').toLowerCase();
+  const key = Object.keys(teamData).find(k => k.toLowerCase() === wanted);
+  return key ? normalizeTeam(teamData[key]) : null;
+}
+
+/* ============================================================
+   11) THAY TÊN POKÉMON TRONG BÀI PHÂN TÍCH BẰNG ICON
+
+   Ví dụ: viết "Garchomp rất mạnh" trong analysis, trang sẽ hiện
+   "[icon Garchomp] rất mạnh". Dùng cho cả overview lẫn phân tích từng con.
+   ============================================================ */
+
+// Gom tất cả tên Pokémon mà trang này biết, để tìm trong bài viết.
+function collectKnownPokemonNames() {
+  const names = new Set();
+  leaderboardData.forEach(e => { names.add(e.name); names.add(e.label); });
+  (typeof featuredNames !== 'undefined' ? featuredNames : []).forEach(n => names.add(n));
+  Object.keys(teamData).forEach(k => {
+    names.add(k);
+    const t = normalizeTeam(teamData[k]);
+    (t.members || []).forEach(m => { if (m.name) names.add(m.name); });
+  });
+  return Array.from(names).filter(Boolean);
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function escapeRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+let _nameRegexCache = null;
+
+/* Nhận text thường → trả HTML đã thay tên Pokémon bằng thẻ <img> rỗng.
+   Ảnh được nạp sau bằng hydratePokemonIcons() để không làm chậm trang. */
+function withPokemonIcons(text) {
+  const safe = escapeHtml(text || '');
+  if (!safe) return '';
+
+  if (!_nameRegexCache) {
+    // Sắp xếp tên dài trước, để "Landorus-Therian" được khớp trước "Landorus".
+    const names = collectKnownPokemonNames().sort((a, b) => b.length - a.length);
+    _nameRegexCache = new RegExp(
+      '\\b(' + names.map(escapeRegex).join('|') + ')\\b',
+      'gi'
+    );
+  }
+
+  return safe.replace(_nameRegexCache, (match) => {
+    const slug = match.toLowerCase().replace(/\s+/g, '-');
+    return `<img class="inline-poke" data-poke="${slug}" alt="${match}" title="${match}">`;
+  });
+}
+
+// Nạp ảnh thật cho các icon vừa chèn (chạy sau khi HTML đã nằm trên trang).
+async function hydratePokemonIcons(container) {
+  if (!container) return;
+  const imgs = Array.from(container.querySelectorAll('img.inline-poke[data-poke]'));
+  const unique = Array.from(new Set(imgs.map(i => i.dataset.poke)));
+
+  await Promise.all(unique.map(async (slug) => {
+    const poke = await getPokemon(slug);
+    if (!poke) return;
+    container
+      .querySelectorAll(`img.inline-poke[data-poke="${slug}"]`)
+      .forEach(img => { img.src = poke.sprite; });
+  }));
+}
