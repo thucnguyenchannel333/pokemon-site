@@ -314,6 +314,5 @@ const teamData = {
         moves: ['Moonblast', 'Diamond Storm', 'Earth Power', 'Protect'],
         analysis: 'Mega Diancie: Đóng vai trò là kẻ quấy rối đầu trận, mega-diancie tận dụng Magic Bounce để ngăn chặn đối thủ đặt bẫy hoặc dùng các chiêu trạng thái cả về mặt tâm lý lẫn kỹ thuật. Chỉ số EV tấn công cụ thể được tính toán kỹ lưỡng để đảm bảo 2HKO slowking bằng Diamond Storm, ngăn đối phương luân chuyển liên tục với Regenerator. Ngoài ra, việc Diamond Storm có 50% tỉ lệ tăng mạnh Phòng thủ có thể nhanh chóng biến mega-diancie thành một bức tường vật lý bất khả xâm phạm.'
       }
-    ]
   }
 };
