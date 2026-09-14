@@ -274,5 +274,46 @@ const teamData = {
       }
     ]
   }
-  // Thêm đội hình cho các Pokémon nổi bật khác ở đây, theo đúng cấu trúc trên.
+}
+{  
+  zapdos: {
+    overview: 'Đóng vai trò là mắt xích luân chuyển phòng thủ chính chống lại các kẻ quét sân vật lý. Khả năng Static trừng phạt những kẻ dùng U-turn hoặc các đòn tấn công vật lý như Fake Out từ mega-medicham và mega-lopunny bằng cách đe dọa gây tê liệt, trực tiếp dập tắt đà hưng phấn của đối thủ. Sự góp mặt của Defog cung cấp khả năng kiểm soát bẫy cần thiết, dù cần sử dụng cẩn thận để tránh dọn sạch chính những chiếc bẫy mà mega-diancie đã phản lại thành công sang phía sân đối phương.',
+      { name: 'zapdos', isAnchor: true },
+      {
+        name: 'Ferrothorn',
+        item: 'Leftovers', ability: 'Iron Barbs', nature: 'Careful',
+        evs: '252 HP / 4 Def / 252 SpD',
+        moves: ['Power Whip','Leech Seed','Stealth Rock','Knock Off'],
+        analysis: 'Ferrothorn: Ngoài việc cung cấp hỗ trợ Stealth Rock, bộ kỹ năng của ferrothorn này tạo nên một lõi phòng thủ cổ điển với slowbro khi cả hai bù đắp hoàn hảo các điểm yếu về hệ cho nhau (ferrothorn kháng các đòn đánh hệ Cỏ, Điện, Bóng tối/Ma; còn slowbro kháng hệ Lửa và Giác đấu).'
+      },
+      {
+        name: 'Slowbro',
+        item: 'Colbur Berry', ability: 'Regenerator', nature: 'Relaxed',
+        evs: '252 HP / 180 Def / 76 SpD',
+        moves: ['Scald', 'Body Press', 'Trick Room', 'Teleport'],
+        analysis: 'Slowbro: Vật phẩm Colbur Berry đóng vai trò cực kỳ quan trọng ở đây. Nó đảm bảo bạn có thể chịu được một cú Knock Off từ weavile hoặc Landorus-Therian để chắc chắn đặt được Trick Room, hoặc chịu đòn từ bisharp và phản công hạ gục nó bằng Body Press. Tuy nhiên, điểm nhấn thực sự nằm ở sự kết hợp giữa Regenerator và Teleport. Vì Teleport có độ ưu tiên thấp, bạn sẽ nhận đòn trước, sau đó luân chuyển (pivot) ra ngoài một cách chậm rãi, hồi 33% máu nhờ Regenerator và đưa ursaluna vào sân mà hoàn toàn không bị trầy xước.'
+      },
+      {
+        name: 'Ursaluna',
+        item: 'Flame Orb', ability: 'Guts', nature: 'Brave',
+        evs: '248 HP / 252 Atk / 8 SpD',
+        moves: ['Swords Dance', 'Earthquake', 'Close Combat', 'Facade'],
+        analysis: 'Ursaluna: Bộ kỹ năng này hoạt động dưới áp lực thời gian nghiêm ngặt và yêu cầu vị trí chính xác để vận hành tối ưu. Việc vào sân thông qua Teleport chậm của slowbro đảm bảo Flame Orb sẽ kích hoạt vào cuối lượt, giúp nhận ngay mức tăng sức mạnh từ Guts cho lượt kế tiếp. Dù Swords Dance là một lựa chọn mạo hiểm do số lượt giới hạn của Trick Room, nó cho phép ursaluna nghiền nát hoàn toàn các đội hình Stall và Bulky Balance. Đối với các đội thiên về tấn công, Facade đóng vai trò là đòn đánh STAB chủ lực có thể sử dụng liên tục.'
+      },
+      {
+        name: 'Dragonite',
+        item: 'Dragonium Z', ability: 'Multiscale', nature: 'Adamant',
+        evs: '252 Atk / 4 SpD / 252 Spe',
+        moves: ['Dragon Dance','Outrage','Extreme Speed','Fire Punch'],
+        analysis: 'Dragonite: Được đặt ở vị trí điều kiện thắng phụ khi nằm ngoài Trick Room, bộ kỹ năng của dragonite này dựa vào Dragon Dance để quét sạch đội hình đối phương vào cuối trận. Dragonium-Z biến Outrage thành Devastating Drake, một đòn tấn công sức mạnh 190 có khả năng xuyên phá tức thì các bức tường Unaware như Quagsire, Alomomola, Zapdos hoặc các tanker cứng cáp. Extreme Speed cung cấp độ ưu tiên quan trọng, cho phép dragonite đóng vai trò là chốt chặn khẩn cấp để revenge-kill các mối đe dọa nhanh hơn hoặc các kẻ quét sân của đối thủ, ngay cả khi chưa kịp tăng chỉ số từ Dragon Dance.'
+      },
+      {
+        name: 'Mega Diancie',
+        item: 'Diancite', ability: 'Magic Bounce', nature: 'Hasty',
+        evs: '28 Atk / 228 SpA / 252 Spe',
+        moves: ['Moonblast', 'Diamond Storm', 'Earth Power', 'Protect'],
+        analysis: 'Mega Diancie: Đóng vai trò là kẻ quấy rối đầu trận, mega-diancie tận dụng Magic Bounce để ngăn chặn đối thủ đặt bẫy hoặc dùng các chiêu trạng thái cả về mặt tâm lý lẫn kỹ thuật. Chỉ số EV tấn công cụ thể được tính toán kỹ lưỡng để đảm bảo 2HKO slowking bằng Diamond Storm, ngăn đối phương luân chuyển liên tục với Regenerator. Ngoài ra, việc Diamond Storm có 50% tỉ lệ tăng mạnh Phòng thủ có thể nhanh chóng biến mega-diancie thành một bức tường vật lý bất khả xâm phạm.'
+      }
+    ]
+  }
 };
