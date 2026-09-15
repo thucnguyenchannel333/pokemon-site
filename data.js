@@ -597,8 +597,349 @@ IVs: 0 Atk
             analyses: {
               ferrothorn: ''
             }
+  },
+     Landorus: {
+            overview: 'Đội hình được xây dựng xoay quanh sự cộng hưởng của Mega-Slowbro, một tanker tăng chỉ số kép có thể tự mình giành chiến thắng khi các kẻ tấn công đặc biệt đã bị loại bỏ. Để hỗ trợ điều này, Alomomola được thêm vào để cung cấp Wish vì khả năng hồi phục của mega-Slowbro (Rest) mang tính thụ động cao. Blissey và Gliscor được tích hợp để tạo thành một lõi phòng thủ đặc biệt gần như không thể xuyên phá, đồng thời cung cấp cả Stealth Rock và Spikes. Corviknight được chọn để dọn bẫy và là điều kiện thắng vật lý thứ hai cùng phong cách "Iron Press". Cuối cùng, ChoiceBand Weavile là mảnh ghép "Semi-Stall" quan trọng, cung cấp tốc độ và khả năng bẫy Pursuit để loại bỏ các hệ Ma và Siêu linh — những kẻ có thể chặn đứng chiêu tấn công chính Body Press của đội.',
+            pokepasteUrl: 'https://pokepast.es/506b2d25e4aa6960',   
+            paste: `
+Volcarona @ Heavy-Duty Boots  
+Ability: Flame Body  
+EVs: 252 HP / 4 SpA / 252 Spe  
+Timid Nature  
+IVs: 0 Atk  
+- Quiver Dance  
+- Bug Buzz  
+- Fiery Dance  
+- Roost  
+
+Latios-Mega @ Latiosite  
+Ability: Levitate  
+EVs: 4 Atk / 252 SpA / 252 Spe  
+Hasty Nature  
+- Ice Beam  
+- Earthquake  
+- Thunderbolt  
+- Roost  
+
+Ferrothorn @ Leftovers  
+Ability: Iron Barbs  
+Shiny: Yes  
+EVs: 252 HP / 48 Def / 200 SpD / 8 Spe  
+Impish Nature  
+- Spikes  
+- Leech Seed  
+- Knock Off  
+- Power Whip  
+
+Clefable @ Fairium Z  
+Ability: Magic Guard  
+EVs: 252 HP / 172 Def / 76 SpD / 8 Spe  
+Bold Nature  
+IVs: 0 Atk  
+- Moonblast  
+- Soft-Boiled  
+- Stealth Rock  
+- Thunder Wave  
+
+Landorus-Therian (M) @ Choice Scarf  
+Ability: Intimidate  
+EVs: 208 Atk / 68 Def / 232 Spe  
+Jolly Nature  
+- Earthquake  
+- U-turn  
+- Explosion / Hidden Power [Ice]  
+- Defog  
+
+Tyranitar @ Choice Band  
+Ability: Sand Stream  
+Shiny: Yes  
+EVs: 40 HP / 252 Atk / 48 SpD / 168 Spe  
+Adamant Nature  
+- Stone Edge  
+- Crunch  
+- Fire Punch  
+- Pursuit / Aqua Tail  
+                        `,
+            analyses: {
+              ferrothorn: ''
+            }
+  },
+  Gholdengo: {
+            overview: 'Đội hình được xây dựng xoay quanh sự cộng hưởng của Mega-Slowbro, một tanker tăng chỉ số kép có thể tự mình giành chiến thắng khi các kẻ tấn công đặc biệt đã bị loại bỏ. Để hỗ trợ điều này, Alomomola được thêm vào để cung cấp Wish vì khả năng hồi phục của mega-Slowbro (Rest) mang tính thụ động cao. Blissey và Gliscor được tích hợp để tạo thành một lõi phòng thủ đặc biệt gần như không thể xuyên phá, đồng thời cung cấp cả Stealth Rock và Spikes. Corviknight được chọn để dọn bẫy và là điều kiện thắng vật lý thứ hai cùng phong cách "Iron Press". Cuối cùng, ChoiceBand Weavile là mảnh ghép "Semi-Stall" quan trọng, cung cấp tốc độ và khả năng bẫy Pursuit để loại bỏ các hệ Ma và Siêu linh — những kẻ có thể chặn đứng chiêu tấn công chính Body Press của đội.',
+            pokepasteUrl: 'https://pokepast.es/a410fe0aca038949',   
+            paste: `
+Heatran @ Air Balloon
+Ability: Flash Fire
+Gender: F
+Timid Nature
+EVs: 252 SpA / 4 SpD / 252 Spe
+IVs: 0 Atk
+- Earth Power
+- Magma Storm
+- Stealth Rock
+- Taunt
+
+Excadrill @ Choice Scarf
+Ability: Mold Breaker
+Gender: M
+Jolly Nature
+EVs: 252 Atk / 4 SpD / 252 Spe
+- Earthquake
+- Rapid Spin
+- Rock Slide
+- Toxic
+
+Gholdengo @ Ghostium Z
+Ability: Good as Gold
+Bold Nature
+EVs: 248 HP / 188 Def / 72 Spe
+IVs: 0 Atk
+- Make It Rain
+- Nasty Plot
+- Recover
+- Shadow Ball
+
+Goodra-Hisui @ Leftovers
+Ability: Sap Sipper
+Gender: M
+Sassy Nature
+EVs: 248 HP / 8 Def / 252 SpD
+- Dragon Tail
+- Ice Beam
+- Knock Off
+- Protect
+
+Scizor @ Scizorite
+Ability: Light Metal
+Gender: M
+Impish Nature
+EVs: 248 HP / 112 Def / 88 SpD / 60 Spe
+- Bullet Punch
+- Knock Off
+- Roost
+- Swords Dance
+
+Skarmory @ Rocky Helmet
+Ability: Sturdy
+Gender: F
+Bold Nature
+EVs: 248 HP / 252 Def / 8 SpD
+IVs: 0 Atk
+- Body Press
+- Iron Defense
+- Roost
+- Spikes
+             `,
+            analyses: {
+              ferrothorn: ''
+            }
+  },
+   Zamazenta: {
+            overview: 'Đội hình được xây dựng xoay quanh sự cộng hưởng của Mega-Slowbro, một tanker tăng chỉ số kép có thể tự mình giành chiến thắng khi các kẻ tấn công đặc biệt đã bị loại bỏ. Để hỗ trợ điều này, Alomomola được thêm vào để cung cấp Wish vì khả năng hồi phục của mega-Slowbro (Rest) mang tính thụ động cao. Blissey và Gliscor được tích hợp để tạo thành một lõi phòng thủ đặc biệt gần như không thể xuyên phá, đồng thời cung cấp cả Stealth Rock và Spikes. Corviknight được chọn để dọn bẫy và là điều kiện thắng vật lý thứ hai cùng phong cách "Iron Press". Cuối cùng, ChoiceBand Weavile là mảnh ghép "Semi-Stall" quan trọng, cung cấp tốc độ và khả năng bẫy Pursuit để loại bỏ các hệ Ma và Siêu linh — những kẻ có thể chặn đứng chiêu tấn công chính Body Press của đội.',
+            pokepasteUrl: 'https://pokepast.es/0e3f1c7d8a9b4e5c',   
+            paste: `
+Tornadus-Therian @ Flyinium Z
+Ability: Regenerator
+Timid Nature
+EVs: 252 SpA / 4 SpD / 252 Spe
+IVs: 0 Atk
+- Bleakwind Storm
+- Focus Blast
+- Heat Wave
+- Nasty Plot
+
+Alomomola @ Assault Vest
+Ability: Regenerator
+Level: 99
+Gender: M
+Impish Nature
+EVs: 68 HP / 188 Def / 252 SpD
+- Aqua Jet
+- Flip Turn
+- Knock Off
+- Mirror Coat
+
+Iron Treads @ Leftovers
+Ability: Quark Drive
+Jolly Nature
+EVs: 32 HP / 252 SpD / 224 Spe
+- Earthquake
+- Ice Spinner
+- Rapid Spin
+- Stealth Rock
+
+Kyurem @ Heavy-Duty Boots
+Ability: Pressure
+Timid Nature
+EVs: 56 HP / 200 SpA / 252 Spe
+IVs: 0 Atk
+- Earth Power
+- Freeze-Dry
+- Roost
+- Substitute
+
+Ogerpon-Wellspring @ Wellspring Mask
+Ability: Water Absorb
+Jolly Nature
+EVs: 252 Atk / 4 SpD / 252 Spe
+- Ivy Cudgel
+- Superpower
+- Swords Dance
+- Trailblaze
+
+Zamazenta @ Leftovers
+Ability: Dauntless Shield
+Jolly Nature
+EVs: 248 HP / 8 SpD / 252 Spe
+- Body Press
+- Heavy Slam
+- Iron Defense
+- Substitute
+           `,
+            analyses: {
+              ferrothorn: ''
+            }
+  },
+     Terapagos: {
+            overview: 'Đội hình được xây dựng xoay quanh sự cộng hưởng của Mega-Slowbro, một tanker tăng chỉ số kép có thể tự mình giành chiến thắng khi các kẻ tấn công đặc biệt đã bị loại bỏ. Để hỗ trợ điều này, Alomomola được thêm vào để cung cấp Wish vì khả năng hồi phục của mega-Slowbro (Rest) mang tính thụ động cao. Blissey và Gliscor được tích hợp để tạo thành một lõi phòng thủ đặc biệt gần như không thể xuyên phá, đồng thời cung cấp cả Stealth Rock và Spikes. Corviknight được chọn để dọn bẫy và là điều kiện thắng vật lý thứ hai cùng phong cách "Iron Press". Cuối cùng, ChoiceBand Weavile là mảnh ghép "Semi-Stall" quan trọng, cung cấp tốc độ và khả năng bẫy Pursuit để loại bỏ các hệ Ma và Siêu linh — những kẻ có thể chặn đứng chiêu tấn công chính Body Press của đội.',
+            pokepasteUrl: 'https://pokepast.es/0e3f1c7d8a9b4e5c',   
+            paste: `
+Gholdengo @ Air Balloon
+Ability: Good as Gold
+Bold Nature
+EVs: 252 HP / 244 Def / 12 Spe
+IVs: 0 Atk
+- Hex
+- Make It Rain
+- Recover
+- Thunder Wave
+
+Dragonite @ Dragonium Z
+Ability: Multiscale
+Gender: M
+Jolly Nature
+EVs: 252 Atk / 4 Def / 252 Spe
+- Dragon Dance
+- Earthquake
+- Fire Punch
+- Outrage
+
+Ogerpon-Wellspring @ Wellspring Mask
+Ability: Water Absorb
+Jolly Nature
+EVs: 252 Atk / 4 Def / 252 Spe
+- Ivy Cudgel
+- Power Whip
+- Superpower
+- Swords Dance
+
+Terapagos @ Heavy-Duty Boots
+Ability: Tera Shift
+Gender: M
+Timid Nature
+EVs: 252 SpA / 4 SpD / 252 Spe
+- Earth Power
+- Ice Beam
+- Rapid Spin
+- Tera Starstorm
+
+Ting-Lu @ Red Card
+Ability: Vessel of Ruin
+Careful Nature
+EVs: 252 HP / 4 Def / 72 SpD / 180 Spe
+IVs: 0 Atk
+- Ruination
+- Spikes
+- Stealth Rock
+- Taunt
+
+Volcarona @ Life Orb
+Ability: Flame Body
+Gender: F
+Timid Nature
+EVs: 252 SpA / 4 SpD / 252 Spe
+IVs: 0 Atk
+- Bug Buzz
+- Fire Blast
+- Giga Drain
+- Quiver Dance
+               `,
+            analyses: {
+              ferrothorn: ''
+            }
+  },
+      GreatTusk: {
+            overview: 'Đội hình được xây dựng xoay quanh sự cộng hưởng của Mega-Slowbro, một tanker tăng chỉ số kép có thể tự mình giành chiến thắng khi các kẻ tấn công đặc biệt đã bị loại bỏ. Để hỗ trợ điều này, Alomomola được thêm vào để cung cấp Wish vì khả năng hồi phục của mega-Slowbro (Rest) mang tính thụ động cao. Blissey và Gliscor được tích hợp để tạo thành một lõi phòng thủ đặc biệt gần như không thể xuyên phá, đồng thời cung cấp cả Stealth Rock và Spikes. Corviknight được chọn để dọn bẫy và là điều kiện thắng vật lý thứ hai cùng phong cách "Iron Press". Cuối cùng, ChoiceBand Weavile là mảnh ghép "Semi-Stall" quan trọng, cung cấp tốc độ và khả năng bẫy Pursuit để loại bỏ các hệ Ma và Siêu linh — những kẻ có thể chặn đứng chiêu tấn công chính Body Press của đội.',
+            pokepasteUrl: 'https://pokepast.es/0e3f1c7d8a9b4e5c',   
+            paste: `
+Ninetales @ Heat Rock
+Ability: Drought
+Gender: F
+Timid Nature
+EVs: 252 SpA / 4 SpD / 252 Spe
+IVs: 0 Atk
+- Encore
+- Healing Wish
+- Overheat
+- Scorching Sands
+
+Cresselia @ Eject Button
+Ability: Levitate
+Shiny: Yes
+Calm Nature
+EVs: 252 HP / 200 Def / 56 SpD
+IVs: 0 Atk
+- Ice Beam
+- Lunar Dance
+- Moonlight
+- Thunder Wave
+
+Diancie @ Diancite
+Ability: Clear Body
+Hasty Nature
+EVs: 4 Atk / 252 SpA / 252 Spe
+- Diamond Storm
+- Moonblast
+- Mystical Fire
+- Stealth Rock
+
+Dragonite @ Dragonium Z
+Ability: Multiscale
+Gender: M
+Jolly Nature
+EVs: 252 Atk / 4 Def / 252 Spe
+- Dragon Dance
+- Earthquake
+- Fire Punch
+- Outrage
+
+Great Tusk @ Eject Pack
+Ability: Protosynthesis
+Jolly Nature
+EVs: 252 Atk / 4 SpD / 252 Spe
+- Close Combat
+- Headlong Rush
+- Ice Spinner
+- Rapid Spin
+
+Venusaur @ Life Orb
+Ability: Chlorophyll
+Gender: F
+Modest Nature
+EVs: 4 Def / 252 SpA / 252 Spe
+IVs: 0 Atk
+- Earth Power
+- Growth
+- Sludge Bomb
+- Weather Ball
+              `,
+            analyses: {
+              ferrothorn: ''
+            }
   }
 };
+  
+
 
 /* ============================================================
    10) POKEPASTE — NHẬP BỘ SET TỰ ĐỘNG THAY VÌ GÕ TAY
