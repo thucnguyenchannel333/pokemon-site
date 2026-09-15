@@ -47,7 +47,7 @@ async function renderDetail() {
     </div>
 
     <div class="detail-art-wrap">
-      <img class="detail-art" src="${poke.officialArt}" alt="${poke.displayName}">
+      <img class="detail-art" src="${poke.officialArt}" alt="${poke.displayName}" data-poke-name="${poke.name}" onerror="onArtError(this)">
     </div>
 
     <div class="detail-types">

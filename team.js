@@ -38,8 +38,13 @@ async function renderTeamSection() {
       const poke = await getPokemon(m.name);
       return {
         ...m,
+        // Luôn ưu tiên TÊN BẠN VIẾT để hiển thị — kể cả khi getPokemon() phải
+        // mượn dữ liệu của Pokémon khác làm ảnh đại diện (ví dụ Mega-Slowbro
+        // mượn ảnh Slowbro), tên hiển thị vẫn đúng như bạn gõ, không bị API
+        // ghi đè.
+        displayName: m.name,
         sprite: poke ? poke.sprite : '',
-        displayName: poke ? poke.displayName : m.name
+        resolvedName: poke ? poke.name : m.name // tên THẬT trên PokeAPI — dùng để tra chuỗi ảnh dự phòng
       };
     })
   );
@@ -60,7 +65,7 @@ async function renderTeamSection() {
         ${members.map((m, i) => `
           <button class="team-icon${i === startIndex ? ' active' : ''}" type="button"
                   data-index="${i}" aria-label="${escapeHtml(m.displayName)}">
-            <img src="${m.sprite}" alt="${escapeHtml(m.displayName)}" loading="lazy">
+            <img src="${m.sprite}" alt="${escapeHtml(m.displayName)}" loading="lazy" data-poke-name="${m.resolvedName}" onerror="onArtError(this)">
           </button>`).join('')}
       </div>
 
@@ -99,7 +104,7 @@ async function renderTeamSection() {
     infoWrap.innerHTML = `
       <div class="set-block">
         <div class="set-header">
-          <img class="set-icon" src="${m.sprite}" alt="">
+          <img class="set-icon" src="${m.sprite}" alt="" data-poke-name="${m.resolvedName}" onerror="onArtError(this)">
           <h4>${escapeHtml(m.displayName)} Details</h4>
         </div>
 

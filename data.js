@@ -46,32 +46,57 @@ const USAGE_META = {
 // label: tên hiển thị đúng như Smogon gọi
 // usage: % số đội hình có mang Pokémon này
 const leaderboardData = [
-  { name: 'alomomola',              label: 'Alomomola',            usage: 22.46 },
-  { name: 'zamazenta',              label: 'Zamazenta',            usage: 20.55 },
-  { name: 'gholdengo',              label: 'Gholdengo',            usage: 18.29 },
-  { name: 'terapagos',              label: 'Terapagos',            usage: 17.18 },
-  { name: 'kingambit',              label: 'Kingambit',            usage: 16.55 },
-  { name: 'landorus-therian',       label: 'Landorus-Therian',     usage: 16.35 },
-  { name: 'gliscor',                label: 'Gliscor',              usage: 16.27 },
-  { name: 'great-tusk',             label: 'Great Tusk',           usage: 13.94 },
-  { name: 'zapdos',                 label: 'Zapdos',               usage: 13.74 },
-  { name: 'raging-bolt',            label: 'Raging Bolt',          usage: 13.62 },
-  { name: 'dragonite',              label: 'Dragonite',            usage: 13.07 },
-  { name: 'garchomp',               label: 'Garchomp',             usage: 12.86 },
-  { name: 'ogerpon-wellspring-mask',label: 'Ogerpon-Wellspring',   usage: 12.77 },
-  { name: 'iron-treads',            label: 'Iron Treads',          usage: 11.68 },
-  { name: 'scizor-mega',            label: 'Scizor-Mega',          usage: 10.90 },
-  { name: 'kyurem',                 label: 'Kyurem',               usage: 10.27 },
-  { name: 'tapu-lele',              label: 'Tapu Lele',            usage: 9.85 },
-  { name: 'corviknight',            label: 'Corviknight',          usage: 9.46 },
-  { name: 'iron-valiant',           label: 'Iron Valiant',         usage: 9.41 },
-  { name: 'diancie-mega',           label: 'Diancie-Mega',         usage: 9.03 },
-  { name: 'toxapex',                label: 'Toxapex',              usage: 8.87 },
-  { name: 'tornadus-therian',       label: 'Tornadus-Therian',     usage: 8.16 },
-  { name: 'urshifu-rapid-strike',   label: 'Urshifu-Rapid-Strike', usage: 8.12 },
-  { name: 'hatterene',              label: 'Hatterene',            usage: 8.03 },
-  { name: 'ferrothorn',             label: 'Ferrothorn',           usage: 7.96 }
-];
+{ name: 'alomomola',              label: 'Alomomola',             usage: 21.42240 },
+{ name: 'Landorus-Therian',       label: 'Landorus-Therian',      usage: 21.37897 },
+{ name: 'Gholdengo',              label: 'Gholdengo',             usage: 19.25160 },
+{ name: 'Zamazenta',              label: 'Zamazenta',             usage: 17.40366 },
+{ name: 'Terapagos',              label: 'Terapagos',             usage: 16.86834 },
+{ name: 'Great Tusk',             label: 'Great Tusk',            usage: 15.96139 },
+{ name: 'Ogerpon-Wellspring',     label: 'Ogerpon-Wellspring',    usage: 15.83100 },
+{ name: 'Kingambit',              label: 'Kingambit',             usage: 15.36386 },
+{ name: 'Zapdos',                 label: 'Zapdos',                usage: 12.66798 },
+{ name: 'Tapu Lele',              label: 'Tapu Lele',             usage: 12.46230 },
+{ name: 'Corviknight',            label: 'Corviknight',           usage: 12.07821 },
+{ name: 'Garchomp',               label: 'Garchomp',              usage: 11.22163 },
+{ name: 'Iron Treads',            label: 'Iron Treads',           usage: 10.79786 },
+{ name: 'Dragonite',              label: 'Dragonite',             usage: 10.58708 },
+{ name: 'Raging Bolt',            label: 'Raging Bolt',           usage: 10.31020 },
+{ name: 'Iron Valiant',           label: 'Iron Valiant',          usage: 10.21226 },
+{ name: 'Gliscor',                label: 'Gliscor',               usage: 10.18998 },
+{ name: 'Kyurem',                 label: 'Kyurem',                usage: 10.11992 },
+{ name: 'Hatterene',              label: 'Hatterene',             usage: 9.97614 },
+{ name: 'Diancie-Mega',           label: 'Diancie-Mega',          usage: 9.70597 },
+{ name: 'Volcarona',              label: 'Volcarona',             usage: 9.20163 },
+{ name: 'Ting-Lu',                label: 'Ting-Lu',               usage: 8.52572 },
+{ name: 'Urshifu-Rapid-Strike',   label: 'Urshifu-Rapid-Strike',  usage: 8.29953 },
+{ name: 'Slowking-Galar',         label: 'Slowking-Galar',        usage: 8.29824 },
+{ name: 'Scizor-Mega',            label: 'Scizor-Mega',           usage: 7.67423 },
+{ name: 'Charizard-Mega-Y',       label: 'Charizard-Mega-Y',      usage: 7.52248 },
+{ name: 'Toxapex',                label: 'Toxapex',               usage: 7.38918 },
+{ name: 'Tornadus-Therian',       label: 'Tornadus-Therian',      usage: 7.04940 },
+{ name: 'Pecharunt',              label: 'Pecharunt',             usage: 6.95326 },
+{ name: 'Tyranitar-Mega',         label: 'Tyranitar-Mega',        usage: 6.93221 },
+{ name: 'Ferrothorn',             label: 'Ferrothorn',            usage: 6.69658 },
+{ name: 'Tapu Koko',              label: 'Tapu Koko',             usage: 5.97998 },
+{ name: 'Slowbro',                label: 'Slowbro',               usage: 5.97842 },
+{ name: 'Lopunny-Mega',           label: 'Lopunny-Mega',          usage: 5.92139 },
+{ name: 'Excadrill',              label: 'Excadrill',             usage: 5.87229 },
+{ name: 'Clodsire',               label: 'Clodsire',              usage: 5.86341 },
+{ name: 'Heatran',                label: 'Heatran',               usage: 5.74097 },
+{ name: 'Ceruledge',              label: 'Ceruledge',             usage: 5.42264 },
+{ name: 'Blissey',                label: 'Blissey',               usage: 5.37038 },
+{ name: 'Dondozo',                label: 'Dondozo',               usage: 5.05258 },
+{ name: 'Moltres',                label: 'Moltres',               usage: 4.85262 },
+{ name: 'Samurott-Hisui',         label: 'Samurott-Hisui',        usage: 4.84418 },
+{ name: 'Melmetal',               label: 'Melmetal',              usage: 4.60578 },
+{ name: 'Sableye-Mega',           label: 'Sableye-Mega',          usage: 4.48311 },
+{ name: 'Clefable',               label: 'Clefable',              usage: 4.41656 },
+{ name: 'Latios-Mega',            label: 'Latios-Mega',           usage: 4.34581 },
+{ name: 'Cinderace',              label: 'Cinderace',             usage: 4.10996 },
+{ name: 'Gyarados-Mega',          label: 'Gyarados-Mega',         usage: 3.91316 },
+{ name: 'Iron Crown',             label: 'Iron Crown',            usage: 3.89876 },
+{ name: 'Charizard-Mega-X',       label: 'Charizard-Mega-X',      usage: 3.75552 },
+]
 
 /* ---------- 2) CÔNG CỤ: DÁN BẢNG THỐNG KÊ SMOGON ĐỂ TỰ SINH DỮ LIỆU ----------
 
@@ -127,19 +152,19 @@ const leaderboardNames = leaderboardData.map(e => e.name);
 // ---------- 3) 8 Pokémon được chọn để hiển thị đầy đủ ----------
 // (khối ô vuông ở trang chính + có trang chi tiết riêng)
 const featuredNames = [
-  'zapdos', 'nidoking', 'clefable', 'tyranitar', 
-  'ferrothorn', 'dragonite', 'slowbro', 'gengar', 
-  'garchomp', 'dragapult', 'excadrill', 'snorlax',
-  'corviknight', 'rillaboom', 'metagross', 'volcarona',
-  'toxapex', 'landorus', 'hydreigon', 'weavile',
-  'salamence', 'greninja', 'lucario', 'cinderace',
-  'urshifu', 'heatran', 'gliscor', 'hippowdon', 
-  'scizor', 'mimikyu', 'zoroark', 'azumarill', 
-  'breloom', 'conkeldurr', 'skarmory', 'alakazam', 
-  'gyarados', 'blissey', 'chansey', 'nidoqueen', 
-  'magnezone', 'starmie', 'thundurus', 'tornadus',
-  'registeel', 'celesteela', 'kartana', 'rotom', 
-  'articuno', 'moltres',
+  'zapdos', 'nidoking', 'alomomola', 'landorus-therian', 
+  'gholdengo', 'zamazenta', 'terapagos', 'great-tusk',
+  'ogerpon-wellspring', 'kingambit', 'corviknight', 'garchomp',
+  'iron-treads', 'dragonite', 'raging-bolt', 'iron-valiant',
+  'gliscor', 'kyurem', 'hatterene', 'diancie-mega',
+  'volcarona', 'ting-lu', 'urshifu-rapid-strike', 'slowking-galar',
+  'scizor-mega', 'charizard-mega-y', 'toxapex', 'tornadus-therian',
+  'pecharunt', 'tyranitar-mega', 'ferrothorn', 'tapu-koko',
+  'slowbro', 'lopunny-mega', 'excadrill', 'clodsire',
+  'heatran', 'ceruledge', 'blissey', 'dondozo',
+  'moltres', 'samurott-hisui', 'melmetal', 'sableye-mega',
+  'clefable', 'latios-mega', 'cinderace', 'gyarados-mega',
+  'iron-crown', 'charizard-mega-x',
 
 ];
 
@@ -147,57 +172,8 @@ const featuredNames = [
 // Đây là nội dung do MÌNH viết tay để demo — hãy thay bằng bài viết
 // thật của bạn (object key phải trùng tên PokeAPI ở trên).
 const analysisText = {
-  zapdos: 'Với bộ hệ Điện/Bay cùng chỉ số Sức Tấn Công Đặc Biệt cao, Zapdos vừa gây sát thương lớn vừa kháng tốt trước đòn Đấu và Cỏ. Khả năng miễn nhiễm Tê Liệt tự nhiên (do hệ Điện) giúp nó trụ vững trong nhiều đội hình phòng thủ.',
-  nidoking: 'Nidoking sở hữu bộ hệ Độc/Đất khá hiếm gặp, giúp xuyên thủng nhiều đội hình phòng thủ tiêu chuẩn. Bộ chỉ số tấn công cân bằng giữa vật lý và đặc biệt cho phép nó chơi linh hoạt theo nhiều bộ chiêu khác nhau.',
-  clefable: 'Đặc trưng Ma Thuật (Magic Guard) giúp Clefable miễn nhiễm sát thương gián tiếp như độc, gai độc hay thời tiết khắc nghiệt — biến nó thành một lựa chọn phòng thủ cực kỳ bền bỉ, nhất là khi đi cùng vật phẩm hồi phục theo lượt.',
-  tyranitar: 'Chỉ số Tấn Công và Phòng Thủ cao cùng khả năng dựng Bão Cát khiến Tyranitar vừa gây sát thương mạnh vừa gián tiếp tăng Phòng Thủ Đặc Biệt cho bản thân — một trong những Pokémon dựng thời tiết đáng gờm nhất.',
-  ferrothorn: 'Bộ hệ Cỏ/Thép giúp Ferrothorn kháng rất nhiều đòn tấn công phổ biến. Dù tốc độ cực thấp, chỉ số phòng thủ vượt trội cùng đặc trưng Gai Nhọn (Iron Barbs) khiến đối thủ phải trả giá mỗi khi tấn công vật lý vào nó.',
-  dragonite: 'Dragonite hiếm khi bị khắc chế triệt để nhờ bộ chỉ số toàn diện và khả năng học đa dạng chiêu thức. Đặc trưng Nhiều Vảy (Multiscale) giúp nó chịu đòn đầu tiên tốt hơn hẳn khi vào sân trong tình huống an toàn.',
-  slowbro: 'Slowbro là một trong những lựa chọn phòng thủ đặc biệt bền bỉ nhờ chỉ số Phòng Thủ cao cùng đặc trưng Tái Sinh (Regenerator), hồi phục HP mỗi khi rút lui — rất phù hợp để luân chuyển liên tục trong trận đấu dài hơi.',
-  gengar: 'Tốc độ cao cùng Sức Tấn Công Đặc Biệt vượt trội giúp Gengar trở thành một trong những đòn kết liễu nhanh và nguy hiểm nhất, đặc biệt khi phối hợp cùng chiến thuật hy sinh (sacrifice) để dọn đường cho đồng đội.',
-  garchomp: 'Garchomp là một trong những Pokémon tấn công vật lý mạnh mẽ nhất, với tốc độ và sức mạnh vượt trội. Bộ hệ Rồng/Đất giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  dragapult: 'Dragapult sở hữu tốc độ cực cao và khả năng tấn công đa dạng, cho phép nó áp đảo nhiều đối thủ trước khi họ kịp phản ứng. Bộ hệ Rồng/Bóng Ma giúp nó kháng nhiều đòn phổ biến và gây sát thương hiệu quả.',
-  excadrill: 'Excadrill là một trong những Pokémon tấn công vật lý mạnh mẽ nhất với tốc độ tốt. Bộ hệ Đất/Thép giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  snorlax: 'Snorlax là một trong những lựa chọn phòng thủ vật lý bền bỉ nhất nhờ chỉ số HP và Phòng Thủ cao. Đặc trưng Ăn Ngủ (Thick Fat) giúp nó kháng nhiều đòn phổ biến, đồng thời hồi phục HP nhanh chóng.',
-  corviknight: 'Corviknight là một trong những Pokémon phòng thủ vật lý mạnh mẽ nhất, với chỉ số Phòng Thủ cao và khả năng chống lại các đòn tấn công bay. Đặc trưng Lá chắn (Iron Barbs) giúp nó gây sát thương cho đối thủ khi bị tấn công.',
-  rillaboom: 'Rillaboom là một trong những Pokémon tấn công vật lý mạnh mẽ nhất với tốc độ tốt. Bộ hệ Cỏ giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  metagross: 'Metagross là một trong những Pokémon tấn công vật lý mạnh mẽ nhất với tốc độ tốt. Bộ hệ Thép/Psi giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  volcarona: 'Volcarona là một trong những Pokémon tấn công đặc biệt mạnh mẽ nhất với tốc độ tốt. Bộ hệ Côn Trùng/Lửa giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  toxapex: 'Toxapex là một trong những Pokémon phòng thủ đặc biệt bền bỉ nhất nhờ chỉ số Phòng Thủ cao và khả năng chống lại các đòn tấn công độc. Đặc trưng Gai độc (Regenerator) giúp nó hồi phục HP mỗi khi rút lui, rất phù hợp để luân chuyển liên tục trong trận đấu dài hơi.',
-  landorus: 'Landorus là một trong những Pokémon tấn công vật lý mạnh mẽ nhất với tốc độ tốt. Bộ hệ Đất/Bay giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  hydreigon: 'Hydreigon là một trong những Pokémon tấn công đặc biệt mạnh mẽ nhất với tốc độ tốt. Bộ hệ Rồng/Bóng Ma giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  weavile: 'Weavile là một trong những Pokémon tấn công vật lý mạnh mẽ nhất với tốc độ cực cao. Bộ hệ Băng/Bóng Ma giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  salamence: 'Salamence là một trong những Pokémon tấn công vật lý mạnh mẽ nhất với tốc độ tốt. Bộ hệ Rồng/Bay giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  greninja: 'Greninja là một trong những Pokémon tấn công đặc biệt mạnh mẽ nhất với tốc độ cực cao. Bộ hệ Nước/Bóng Ma giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  lucario: 'Lucario là một trong những Pokémon tấn công vật lý mạnh mẽ nhất với tốc độ tốt. Bộ hệ Thép/Đấu giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  cinderace: 'Cinderace là một trong những Pokémon tấn công vật lý mạnh mẽ nhất với tốc độ tốt. Bộ hệ Lửa giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  urshifu: 'Urshifu là một trong những Pokémon tấn công vật lý mạnh mẽ nhất với tốc độ tốt. Bộ hệ Đấu/Đen giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  heatran: 'Heatran là một trong những Pokémon phòng thủ đặc biệt bền bỉ nhất nhờ chỉ số Phòng Thủ cao và khả năng chống lại các đòn tấn công lửa. Bộ hệ Lửa/Thép giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  gliscor: 'Gliscor là một trong những Pokémon phòng thủ vật lý mạnh mẽ nhất với tốc độ tốt. Bộ hệ Đất/Bay giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  hippowdon: 'Hippowdon là một trong những Pokémon phòng thủ vật lý bền bỉ nhất nhờ chỉ số Phòng Thủ cao và khả năng chống lại các đòn tấn công đất. Bộ hệ Đất giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  scizor: 'Scizor là một trong những Pokémon tấn công vật lý mạnh mẽ nhất với tốc độ tốt. Bộ hệ Côn Trùng/Thép giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  mimikyu: 'Mimikyu là một trong những Pokémon tấn công vật lý mạnh mẽ nhất với tốc độ tốt. Bộ hệ Bóng Ma/Cỏ giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  zoroark: 'Zoroark là một trong những Pokémon tấn công đặc biệt mạnh mẽ nhất với tốc độ tốt. Bộ hệ Bóng Ma giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  azumarill: 'Azumarill là một trong những Pokémon tấn công vật lý mạnh mẽ nhất với tốc độ tốt. Bộ hệ Nước/Cỏ giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  breloom: 'Breloom là một trong những Pokémon tấn công vật lý mạnh mẽ nhất với tốc độ tốt. Bộ hệ Cỏ/Đấu giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  conkeldurr: 'Conkeldurr là một trong những Pokémon tấn công vật lý mạnh mẽ nhất với tốc độ tốt. Bộ hệ Đấu giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  skarmory: 'Skarmory là một trong những Pokémon phòng thủ vật lý bền bỉ nhất nhờ chỉ số Phòng Thủ cao và khả năng chống lại các đòn tấn công bay. Bộ hệ Thép/Bay giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  alakazam: 'Alakazam là một trong những Pokémon tấn công đặc biệt mạnh mẽ nhất với tốc độ cực cao. Bộ hệ Psi giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  gyarados: 'Gyarados là một trong những Pokémon tấn công vật lý mạnh mẽ nhất với tốc độ tốt. Bộ hệ Nước/Bay giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  blissey: 'Blissey là một trong những Pokémon phòng thủ đặc biệt bền bỉ nhất nhờ chỉ số Phòng Thủ cao và khả năng chống lại các đòn tấn công đặc biệt. Bộ hệ Bình thường giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  chansey: 'Chansey là một trong những Pokémon phòng thủ đặc biệt bền bỉ nhất nhờ chỉ số Phòng Thủ cao và khả năng chống lại các đòn tấn công đặc biệt. Bộ hệ Bình thường giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  nidoqueen: 'Nidoqueen là một trong những Pokémon tấn công vật lý mạnh mẽ nhất với tốc độ tốt. Bộ hệ Độc/Đất giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  magnezone: 'Magnezone là một trong những Pokémon tấn công đặc biệt mạnh mẽ nhất với tốc độ tốt. Bộ hệ Điện/Thép giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  starmie: 'Starmie là một trong những Pokémon tấn công đặc biệt mạnh mẽ nhất với tốc độ cực cao. Bộ hệ Nước/Psi giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  thundurus: 'Thundurus là một trong những Pokémon tấn công đặc biệt mạnh mẽ nhất với tốc độ tốt. Bộ hệ Điện/Bóng Ma giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  tornadus: 'Tornadus là một trong những Pokémon tấn công vật lý mạnh mẽ nhất với tốc độ tốt. Bộ hệ Bay giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  registeel: 'Registeel là một trong những Pokémon phòng thủ vật lý bền bỉ nhất nhờ chỉ số Phòng Thủ cao và khả năng chống lại các đòn tấn công thép. Bộ hệ Thép giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  celesteela: 'Celesteela là một trong những Pokémon phòng thủ vật lý bền bỉ nhất nhờ chỉ số Phòng Thủ cao và khả năng chống lại các đòn tấn công bay. Bộ hệ Thép/Bay giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  kartana: 'Kartana là một trong những Pokémon tấn công vật lý mạnh mẽ nhất với tốc độ cực cao. Bộ hệ Cỏ/Thép giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  rotom: 'Rotom là một trong những Pokémon tấn công đặc biệt mạnh mẽ nhất với tốc độ tốt. Bộ hệ Điện/Bóng Ma giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  articuno: 'Articuno là một trong những Pokémon phòng thủ đặc biệt bền bỉ nhất nhờ chỉ số Phòng Thủ cao và khả năng chống lại các đòn tấn công băng. Bộ hệ Băng/Bay giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-  moltres: 'Moltres là một trong những Pokémon tấn công đặc biệt mạnh mẽ nhất với tốc độ tốt. Bộ hệ Lửa/Bay giúp nó kháng nhiều đòn phổ biến, đồng thời gây sát thương lớn cho các đối thủ yếu hệ.',
-
+  Nidoking: 'Nidoking là một Pokémon cực kỳ đa dụng, có thể đảm nhận nhiều vai trò trong đội hình. Với Ability Sheer Force kết hợp với Life Orb, nó trở thành một mối đe dọa lớn trên sân đấu. Bộ chiêu thức đa dạng cho phép Nidoking xử lý nhiều loại đối thủ khác nhau, từ các Pokémon Grass đến các Pokémon Flying. Sử dụng Substitute giúp Nidoking duy trì áp lực lên đối phương và bảo vệ bản thân khỏi các đòn tấn công không mong muốn.',
+  Zapdos: 'Zapdos là một Pokémon Flying/Electric mạnh mẽ, có khả năng kiểm soát sân đấu nhờ vào Defog và Volt Switch. Ability Static giúp trừng phạt các Pokémon sử dụng đòn tấn công vật lý, tạo ra cơ hội cho đồng đội của nó. Bộ chiêu thức đa dạng cho phép Zapdos xử lý nhiều loại đối thủ khác nhau, từ các Pokémon Water đến các Pokémon Ground. Với Heavy-Duty Boots, Zapdos có thể di chuyển tự do mà không lo bị ảnh hưởng bởi Stealth Rock.'
 };
 
 // ---------- 5) Bảng màu theo hệ Pokémon (quy ước màu phổ biến) ----------
@@ -225,23 +201,88 @@ function getStatValue(statsArr, key) {
   return found ? found.base_stat : 0;
 }
 
-/* Chọn ảnh ĐẸP NHẤT có sẵn cho 1 Pokémon.
-   Thứ tự ưu tiên:
-     1. Pokémon HOME  — ảnh render nét, viền sạch (ảnh "mới" bạn muốn dùng)
-     2. Official artwork — tranh vẽ chính thức
-     3. front_default — sprite pixel đời cũ (ảnh "cũ", chỉ dùng khi 2 cái trên không có)
-   Nhờ vậy TOÀN BỘ ảnh Pokémon trên web đều tự động dùng bản nét nhất. */
-function pickArtwork(sprites) {
-  const other = sprites.other || {};
-  return (
-    (other.home && other.home.front_default) ||
-    (other['official-artwork'] && other['official-artwork'].front_default) ||
-    sprites.front_default
-  );
+/* ẢNH POKÉMON — CHUỖI DỰ PHÒNG TỰ ĐỘNG.
+
+   Vấn đề bạn gặp (ảnh nhỏ xíu/vỡ hình trong lưới ô vuông và trong đội
+   hình): dữ liệu PokeAPI trả về CÓ đường link ảnh HOME, nhưng đôi khi
+   file ảnh ở link đó không tải được (lỗi mạng tạm thời, hoặc file thiếu
+   cho vài Pokémon hiếm) — trình duyệt hiện icon "ảnh vỡ" nhỏ xíu thay vì
+   báo lỗi rõ ràng.
+
+   Cách sửa: thay vì chỉ chọn 1 link ảnh rồi thôi, mình lưu lại cả CHUỖI
+   ảnh dự phòng (HOME → official-artwork → dream world → sprite pixel cũ).
+   Mọi thẻ <img> trên trang đều gắn onerror="onArtError(this)" — hễ ảnh
+   đang dùng bị lỗi, nó tự động nhảy sang ảnh kế tiếp trong chuỗi, không
+   bao giờ dừng lại ở icon vỡ hình nữa. */
+const _artFallbackCache = {}; // tên Pokémon -> mảng link ảnh dự phòng
+
+function onArtError(imgEl) {
+  const name = imgEl.dataset.pokeName;
+  const candidates = _artFallbackCache[name] || [];
+  let idx = Number(imgEl.dataset.fallbackIndex || '0') + 1;
+  while (idx < candidates.length && !candidates[idx]) idx++;
+
+  if (idx < candidates.length && candidates[idx] !== imgEl.src) {
+    imgEl.dataset.fallbackIndex = String(idx);
+    imgEl.src = candidates[idx];
+  } else {
+    imgEl.onerror = null; // hết ảnh dự phòng — dừng lại, tránh lặp vô hạn
+  }
 }
 
+/* Một số Pokémon có nhiều "form" nhưng PokeAPI KHÔNG nhận tên trần — phải
+   gọi đúng tên form mặc định thì mới ra dữ liệu (gọi tên trần bị 404,
+   đúng như lỗi trong Console bạn từng gửi). Bảng dưới map tên trần/tên
+   sai → tên đúng trên PokeAPI, áp dụng tự động ở MỌI nơi trên trang.
+
+   Hai dòng mới thêm hôm nay, do lỗi trong ảnh bạn gửi:
+   - 'mega-diancie' → 'diancie-mega': Mega Diancie CÓ THẬT, nhưng PokeAPI
+     đặt tên theo thứ tự "tên-mega" (hậu tố), không phải "mega-tên" (tiền
+     tố) như bạn gõ trong teamData. Đây là lỗi chính tả tên, có thể sửa.
+   - 'mega-slowbro' → 'slowbro': Mega Slowbro KHÔNG PHẢI Pokémon chính
+     thức — mình đã kiểm tra trực tiếp trong danh sách gốc của PokeAPI
+     (file pokemon.csv trên GitHub của họ) và không có "slowbro-mega" ở
+     đó. Vật phẩm "Slowbronite" trong đoạn bạn dán cũng không tồn tại
+     trong game thật. Vì Pokémon này không có dữ liệu/ảnh chính thức,
+     mình cho nó dùng tạm ảnh Slowbro thường làm ảnh đại diện — tên hiển
+     thị "Mega-Slowbro" cùng toàn bộ item/ability/EVs/moveset/phân tích
+     bạn viết vẫn giữ nguyên, chỉ có ẢNH là mượn tạm. */
+const POKEAPI_NAME_ALIASES = {
+  landorus: 'landorus-incarnate',
+  thundurus: 'thundurus-incarnate',
+  tornadus: 'tornadus-incarnate',
+  enamorus: 'enamorus-incarnate',
+  urshifu: 'urshifu-single-strike',
+  mimikyu: 'mimikyu-disguised',
+  basculin: 'basculin-red-striped',
+  meowstic: 'meowstic-male',
+  indeedee: 'indeedee-male',
+  aegislash: 'aegislash-shield',
+  wishiwashi: 'wishiwashi-solo',
+  eiscue: 'eiscue-ice-face',
+  morpeko: 'morpeko-full-belly',
+  zygarde: 'zygarde-50',
+  giratina: 'giratina-altered',
+  shaymin: 'shaymin-land',
+  deoxys: 'deoxys-normal',
+  keldeo: 'keldeo-ordinary',
+  meloetta: 'meloetta-aria',
+  oricorio: 'oricorio-baile',
+  darmanitan: 'darmanitan-standard',
+  toxtricity: 'toxtricity-amped',
+  minior: 'minior-red-meteor',
+  wormadam: 'wormadam-plant',
+  pumpkaboo: 'pumpkaboo-average',
+  gourgeist: 'gourgeist-average',
+  lycanroc: 'lycanroc-midday',
+  // Sửa lỗi chính tả tên mega (PokeAPI dùng hậu tố "-mega", không phải tiền tố):
+  'mega-diancie': 'diancie-mega',
+  'mega-scizor': 'scizor-mega',
+  'mega-slowbro': 'slowbro' // không có thật — mượn ảnh Slowbro thường
+};
+
 async function getPokemon(name) {
-  const key = name.toLowerCase();
+  const key = (POKEAPI_NAME_ALIASES[name.toLowerCase()] || name).toLowerCase();
   if (_pokeCache[key]) return _pokeCache[key];
 
   try {
@@ -256,13 +297,19 @@ async function getPokemon(name) {
     if (!res.ok) throw new Error('Không tìm thấy Pokémon: ' + key);
     const raw = await res.json();
 
-    const artwork = pickArtwork(raw.sprites);
+    const artCandidates = [
+      raw.sprites.other && raw.sprites.other.home && raw.sprites.other.home.front_default,
+      raw.sprites.other && raw.sprites.other['official-artwork'] && raw.sprites.other['official-artwork'].front_default,
+      raw.sprites.other && raw.sprites.other.dream_world && raw.sprites.other.dream_world.front_default,
+      raw.sprites.front_default
+    ].filter(Boolean);
+
     const poke = {
       name: raw.name,
       displayName: capitalize(raw.name),
       id: raw.id,
-      sprite: artwork,        // dùng cho icon nhỏ (bảng xếp hạng, ô tìm kiếm...)
-      officialArt: artwork,   // dùng cho ảnh lớn (thẻ Pokémon, trang chi tiết)
+      sprite: artCandidates[0] || '',   // dùng cho icon nhỏ (bảng xếp hạng, ô tìm kiếm...)
+      officialArt: artCandidates[0] || '', // dùng cho ảnh lớn (thẻ Pokémon, trang chi tiết)
       pixelSprite: raw.sprites.front_default, // giữ lại phòng khi cần sprite cũ
       types: raw.types
         .sort((a, b) => a.slot - b.slot)
@@ -276,6 +323,7 @@ async function getPokemon(name) {
         spe: getStatValue(raw.stats, 'speed')
       }
     };
+    _artFallbackCache[poke.name] = artCandidates;
     _pokeCache[key] = poke;
     return poke;
   } catch (err) {
@@ -476,6 +524,79 @@ const teamData = {
         analysis: 'mega-diancie: Đóng vai trò là kẻ quấy rối đầu trận, mega-diancie tận dụng Magic Bounce để ngăn chặn đối thủ đặt bẫy hoặc dùng các chiêu trạng thái cả về mặt tâm lý lẫn kỹ thuật. Chỉ số EV tấn công cụ thể được tính toán kỹ lưỡng để đảm bảo 2HKO slowking bằng Diamond Storm, ngăn đối phương luân chuyển liên tục với Regenerator. Ngoài ra, việc Diamond Storm có 50% tỉ lệ tăng mạnh Phòng thủ có thể nhanh chóng biến mega-diancie thành một bức tường vật lý bất khả xâm phạm.'
       }
     ]
+  },
+  
+  alomomola: {
+            overview: 'Đội hình được xây dựng xoay quanh sự cộng hưởng của Mega-Slowbro, một tanker tăng chỉ số kép có thể tự mình giành chiến thắng khi các kẻ tấn công đặc biệt đã bị loại bỏ. Để hỗ trợ điều này, Alomomola được thêm vào để cung cấp Wish vì khả năng hồi phục của mega-Slowbro (Rest) mang tính thụ động cao. Blissey và Gliscor được tích hợp để tạo thành một lõi phòng thủ đặc biệt gần như không thể xuyên phá, đồng thời cung cấp cả Stealth Rock và Spikes. Corviknight được chọn để dọn bẫy và là điều kiện thắng vật lý thứ hai cùng phong cách "Iron Press". Cuối cùng, ChoiceBand Weavile là mảnh ghép "Semi-Stall" quan trọng, cung cấp tốc độ và khả năng bẫy Pursuit để loại bỏ các hệ Ma và Siêu linh — những kẻ có thể chặn đứng chiêu tấn công chính Body Press của đội.',
+            pokepasteUrl: 'https://pokepast.es/1436f7e7ccd7a424',   
+            paste: `
+Mega-Slowbro @ Slowbronite  
+Ability: Regenerator  
+Tera Type: Water  
+EVs: 252 HP / 4 Def / 252 SpD  
+Calm Nature  
+IVs: 0 Atk  
+- Body Press  
+- Iron Defense  
+- Amnesia  
+- Rest  
+
+Weavile @ Choice Band  
+Ability: Pickpocket  
+Tera Type: Dark  
+EVs: 4 HP / 252 Atk / 252 Spe  
+Jolly Nature  
+- Knock Off  
+- Triple Axel  
+- Pursuit  
+- Ice Shard  
+
+Alomomola @ Heavy-Duty Boots  
+Ability: Regenerator  
+Tera Type: Water  
+EVs: 252 HP / 252 Def / 4 SpD  
+Relaxed Nature  
+IVs: 0 Spe  
+- Flip Turn  
+- Toxic  
+- Wish  
+- Protect  
+
+Gliscor @ Toxic Orb  
+Ability: Poison Heal  
+Tera Type: Ground  
+EVs: 252 HP / 4 Def / 252 SpD  
+Careful Nature  
+- Earthquake  
+- Spikes  
+- Knock Off  
+- Roost  
+
+Blissey (F) @ Heavy-Duty Boots  
+Ability: Natural Cure  
+Tera Type: Normal  
+EVs: 252 HP / 252 Def / 4 SpD  
+Bold Nature  
+IVs: 0 Atk  
+- Seismic Toss  
+- Toxic  
+- Stealth Rock  
+- Soft-Boiled  
+
+Corviknight @ Rocky Helmet  
+Ability: Pressure  
+Tera Type: Flying  
+EVs: 252 HP / 252 Def / 4 SpD  
+Impish Nature  
+IVs: 0 Atk  
+- Body Press  
+- Iron Defense  
+- Defog  
+- Roost  
+          `,
+            analyses: {
+              ferrothorn: ''
+            }
   }
 };
 
@@ -664,7 +785,7 @@ function withPokemonIcons(text) {
 
   return safe.replace(_nameRegexCache, (match) => {
     const slug = match.toLowerCase().replace(/\s+/g, '-');
-    return `<img class="inline-poke" data-poke="${slug}" alt="${match}" title="${match}">`;
+    return `<img class="inline-poke" data-poke="${slug}" alt="${match}" title="${match}" onerror="onArtError(this)">`;
   });
 }
 
@@ -679,6 +800,9 @@ async function hydratePokemonIcons(container) {
     if (!poke) return;
     container
       .querySelectorAll(`img.inline-poke[data-poke="${slug}"]`)
-      .forEach(img => { img.src = poke.sprite; });
+      .forEach(img => {
+        img.src = poke.sprite;
+        img.dataset.pokeName = poke.name; // để onArtError() tra đúng chuỗi ảnh dự phòng
+      });
   }));
 }

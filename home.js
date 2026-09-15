@@ -38,7 +38,7 @@ async function renderLeaderboard() {
       : `<span class="rank-plain">${i + 1}</span>`;
 
     const iconHtml = poke
-      ? `<img class="poke-icon" src="${poke.sprite}" alt="" loading="lazy">`
+      ? `<img class="poke-icon" src="${poke.sprite}" alt="" loading="lazy" data-poke-name="${poke.name}" onerror="onArtError(this)">`
       : '<span class="poke-icon"></span>';
 
     const tr = document.createElement('tr');
@@ -178,7 +178,7 @@ async function renderFeaturedGrid() {
         <span class="poke-card-arrow">↗</span>
       </div>
       <div class="poke-card-media">
-        <img src="${poke.officialArt}" alt="${poke.displayName}" loading="lazy">
+        <img src="${poke.officialArt}" alt="${poke.displayName}" loading="lazy" data-poke-name="${poke.name}" onerror="onArtError(this)">
       </div>
       <div class="poke-card-tags">
         <div class="type-badges">

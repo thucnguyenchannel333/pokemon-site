@@ -58,7 +58,7 @@ function initHeaderSearch() {
 
     dropdown.innerHTML = matches.map(m => `
       <a class="search-item" href="pokemon.html?name=${m.name}">
-        <img class="search-icon" data-name="${m.name}" alt="">
+        <img class="search-icon" data-name="${m.name}" data-poke-name="${m.name}" alt="" onerror="onArtError(this)">
         <span>${escapeHtml(m.label)}</span>
       </a>
     `).join('');
@@ -68,7 +68,10 @@ function initHeaderSearch() {
     matches.forEach(async (m) => {
       const poke = await getPokemon(m.name);
       const img = dropdown.querySelector(`img[data-name="${m.name}"]`);
-      if (poke && img) img.src = poke.sprite;
+      if (poke && img) {
+        img.src = poke.sprite;
+        img.dataset.pokeName = poke.name; // đổi sang tên đã phân giải, để onArtError() tra đúng
+      }
     });
   });
 
